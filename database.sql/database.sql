@@ -31,8 +31,6 @@ branch_id VARCHAR(10),
 
 FOREIGN KEY (branch_id) REFERENCES Branch(branch_id)
 );
-
-
 DROP TABLE IF EXISTS account;
 CREATE TABLE account(
 account_no VARCHAR(20) PRIMARY KEY,
@@ -42,8 +40,6 @@ balance decimal(15,2) default 0,
 open_date DATE,
 status VARCHAR(20),
 branch_id VARCHAR(10),
-
  FOREIGN KEY(customer_id) REFERENCES customer(customer_id),
  FOREIGN KEY(branch_id) REFERENCES Branch(branch_id)
  );
- 
