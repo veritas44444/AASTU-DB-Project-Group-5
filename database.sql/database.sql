@@ -3,10 +3,8 @@ USE GEBAR_COMMERCIAL_BANK;
 GO
 DROP TABLE IF EXISTS Account;
 GO
-
 DROP TABLE IF EXISTS Customer;
 GO
-
 DROP TABLE IF EXISTS Branch;
 GO
 DROP TABLE IF EXISTS Branch;
@@ -18,12 +16,6 @@ Phone_number VARCHAR(20),
 Manager_id VARCHAR(10),
 CONSTRAINT pk_Branch PRIMARY KEY (Branch_id)
 );
-INSERT INTO Branch (branch_id, branch_name,adress,phone_number,manager_id)
-VALUES 
-('BR-001', 'Main Branch', 'Addis Ababa, Bole', '+251911000001','MG-1001'),
-('BR-002', 'Piassa Branch', 'Addis Ababa, Piassa', '+251911000002','MG-1002');
-
-
 DROP TABLE IF EXISTS Customers;
 CREATE TABLE Customer(
 customer_id VARCHAR(15) PRIMARY KEY,
