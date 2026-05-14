@@ -47,3 +47,36 @@ VALUES
 ('A1009','C009','B002','Savings',6000,'Closed','2026-01-30'),
 
 ('A1010','C010','B003','Current',10000,'Active','2026-02-10');
+INSERT INTO Employee
+(EmployeeID, First_name, last_name , Position, Email, Phone, Salary, BranchID)
+VALUES
+('E001', 'Tsegaye', 'Endale', 'Manager', 'tsegaye@gcb.com', '0913000001', 25000, 'B001'),
+
+('E002', 'Helen ',  'Fikadu', 'Cashier', 'helen@gcb.com', '0913000002', 12000, 'B001'),
+
+('E003', 'Yonatan',  'Abay', 'Accountant', 'yonatan@gcb.com', '0913000003', 15000, 'B002'),
+
+('E004', 'Mulugeta',  'Birhanu', 'Teller', 'mulugeta@gcb.com', '0913000004', 11000, 'B002'),
+
+('E005', 'Eden',    'Shiferaw', 'Customer Service', 'eden@gcb.com', '0913000005', 10000, 'B003'),
+
+('E006', 'Solomon',   'Wondimu', 'Manager', 'solomon@gcb.com', '0913000006', 25000, 'B003');
+
+
+INSERT INTO Loan (LoanID, CustomerID, LoanType, Amount, ApplicationDate, BranchID)
+VALUES
+('L001', 'C001', 'Home Loan', 500000, '2026-02-01', 'B001'),
+('L002', 'C003', 'Business Loan', 300000, '2026-02-04', 'B003'),
+('L003', 'C005', 'Education Loan', 120000, '2026-02-06', 'B003'),
+('L004', 'C007', 'Car Loan', 250000, '2026-02-08', 'B003'),
+('L005', 'C009', 'Personal Loan', 80000, '2026-02-10', 'B002');
+
+INSERT INTO Transactions 
+(TransactionID, AccountNo, BranchID, TransactionType, Amount, TransactionDate)
+VALUES
+('T001', 'A1001', 'B001', 'Deposit', 1000, '2026-03-01'),
+('T002', 'A1002', 'B002', 'Withdrawal', 500, '2026-03-02'),
+('T003', 'A1003', 'B003', 'Deposit', 2000, '2026-03-03'),
+('T004', 'A1004', 'B001', 'Withdrawal', 700, '2026-03-04'),
+('T005', 'A1005', 'B003', 'Deposit', 1500, '2026-03-05'),
+('T006', 'A1008', 'B001', 'Deposit', 2500, '2026-03-06');
