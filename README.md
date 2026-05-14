@@ -30,93 +30,61 @@ The implementation includes:
 1. Branch:
 
      BranchID 
-    
      BranchName 
-     
      Location 
-     
      Phone
 
   2. Customer:
 
-   CustomerID 
-   
-   FullName 
-    
-   Gender 
-   
-   Phone 
-   
-   Address 
-   
-   Registration 
-   
-   Date 
-   
-   BranchID
+   CustomerID
+     FullName 
+     Gender 
+     Phone 
+     Address 
+     Registration
+     Date 
+     BranchID
    
  3. Account:
-
-   
      AccountNo 
-     
      CustomerID 
-     
      BranchID 
-     
      AccountType 
-     
      Balance
    
  4. Loan:
    
        LoanID 
-    
        CustomerID 
-    
        LoanType 
-    
        Amount 
-    
        Application Date 
-    
        BranchID
    
  5. Transaction:
    
      TransactionID 
-     
       AccountNo 
-      
       BranchID 
-      
       TransactionType 
-      
       Amount 
-      
       TransactionDate
    
  6. Employee:
     
-      EmployeeID 
-    
+      EmployeeID
       FullName 
-    
       Position 
-    
       Email 
-    
       Phone 
-    
       Salary 
-    
       BranchID
 
 ### Relationships
-- Supplier -> Product (1:M)
-- Product -> Inventory (1:1)
-- Product -> Sale (1:M)
-- Customer -> Sale (1:M)
+- Branch -> Customer (1:M)
+- Account -> Loan (1:1)
+- Transaction -> Loan (1:M)
+- Customer -> Employee (1:M)
 
 ## Repository Structure
 The repository follows the required submission format:
