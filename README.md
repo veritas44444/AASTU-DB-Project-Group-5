@@ -20,7 +20,7 @@ The Gebar Commercial Bank project is building a database to improve how the bank
 The main goal of this database is to keep information safe and ensure transactions happen quickly. The Gebar Commercial Bank database can handle customers and multiple branches. It will automatically update accounts monitor loans check transactions and provide reports to branches. All the information will be stored in one place. By doing all these things the Gebar Commercial Bank database will make the bank work efficiently reduce mistakes and make it easier for the bank to do more digital banking, in the future. The Gebar Commercial Bank project is crucial for the bank to function well and assist its customers.
 
 The implementation includes:
-- Relational database design and implementation in MySQL
+- Relational database design and implementation in Microsoft SQL
 - NoSQL design and implementation in MongoDB
 - Normalized schema up to BCNF for the relational part
 - Example operational and analytical queries
@@ -35,59 +35,59 @@ The implementation includes:
      BranchID,
      BranchName, 
      Location, 
-     Phone,
+     Phone
 
   2. Customer:
 
-   CustomerID
-     FullName 
-     Gender 
-     Phone 
-     Address 
-     Registration
-     Date 
+   CustomerID,
+     FullName, 
+     Gender, 
+     Phone, 
+     Address, 
+     Registration,
+     Date, 
      BranchID
    
  3. Account:
-     AccountNo 
-     CustomerID 
-     BranchID 
-     AccountType 
+     AccountNo, 
+     CustomerID, 
+     BranchID, 
+     AccountType, 
      Balance
    
  4. Loan:
    
-       LoanID 
-       CustomerID 
-       LoanType 
-       Amount 
-       Application Date 
+       LoanID, 
+       CustomerID, 
+       LoanType,
+       Amount, 
+       Application Date, 
        BranchID
    
  5. Transaction:
    
-     TransactionID 
-      AccountNo 
-      BranchID 
-      TransactionType 
-      Amount 
+     TransactionID, 
+      AccountNo, 
+      BranchID, 
+      TransactionType, 
+      Amount, 
       TransactionDate
    
  6. Employee:
     
-      EmployeeID
-      FullName 
-      Position 
-      Email 
-      Phone 
-      Salary 
+      EmployeeID,
+      FullName, 
+      Position, 
+      Email, 
+      Phone,
+      Salary, 
       BranchID
 
 ### Relationships
-- Branch -> Customer (1:M)
+- Branch -> Customer (1:M)
 - Branch -> Employee (1:M)
-- Branch ->Transaction (M:N)
-- Branch ->Account (M:N)
+- Branch ->Transaction (1:1)
+- Branch ->Account (1:1)
 - Branch ->Loan (1:M)
 - Account -> Transaction (1:M)
 - Customer  -> Loan (1:M)
@@ -103,7 +103,7 @@ The repository follows the required submission format:
     
     presentation.pptx
     
-/mysql/
+/microsoft sql/
 
     schema.sql
     
@@ -134,17 +134,17 @@ README.md
 ...
 
 ## Technologies Used
-- MySQL 8+
+- Microsoft SQL 8+
 - MongoDB 6+
 
 ## How To Run
 
-### MySQL
+### Microsoft SQL
 1. Create a database:
     - "CREATE DATABASE inventory_db;"
     - "USE inventory_db;"
-2. Run schema script from "mysql/schema.sql".
-3. Run data and query script from "mysql/queries.sql".
+2. Run schema script from "microsoft sql/schema.sql".
+3. Run data and query script from "microsoft sql/queries.sql".
 
 ### MongoDB
 1. Open "mongosh".
