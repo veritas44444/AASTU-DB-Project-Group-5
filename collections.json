@@ -1,0 +1,514 @@
+{
+  "_meta": {
+    "project": "Gebar Commercial Bank — MongoDB Seed Data",
+    "group": "Group 5",
+    "university": "Addis Ababa Science and Technology University",
+    "date": "April 2026",
+    "usage": "Loaded automatically by queries.js via fs.readFileSync(). Dates are ISO-8601 strings; queries.js converts them to BSON Date objects before insertion."
+  },
+
+  "branches": [
+    {
+      "branch_id":    "BR-001",
+      "branch_name":  "Main Branch",
+      "address":      "Bole Road, Addis Ababa",
+      "phone_number": "+251 115 123 456",
+      "manager_id":   "EMP-001"
+    },
+    {
+      "branch_id":    "BR-002",
+      "branch_name":  "Piassa Branch",
+      "address":      "Churchill Avenue, Addis Ababa",
+      "phone_number": "+251 115 234 567",
+      "manager_id":   "EMP-006"
+    },
+    {
+      "branch_id":    "BR-003",
+      "branch_name":  "Megenagna Branch",
+      "address":      "Megenagna Square, Addis Ababa",
+      "phone_number": "+251 115 345 678",
+      "manager_id":   "EMP-010"
+    },
+    {
+      "branch_id":    "BR-004",
+      "branch_name":  "Arada Branch",
+      "address":      "Arada Sub-city, Addis Ababa",
+      "phone_number": "+251 115 456 789",
+      "manager_id":   "EMP-004"
+    }
+  ],
+
+  "employees": [
+    {
+      "employee_id": "EMP-001",
+      "first_name":  "Abebe",
+      "last_name":   "Girma",
+      "position":    "Branch Manager",
+      "salary":      28000.00,
+      "hire_date":   "2018-03-15",
+      "branch_id":   "BR-001",
+      "email":       "abebe.girma@gebar.et",
+      "phone":       "+251 911 111 001"
+    },
+    {
+      "employee_id": "EMP-002",
+      "first_name":  "Tigist",
+      "last_name":   "Alemu",
+      "position":    "Teller",
+      "salary":      12000.00,
+      "hire_date":   "2020-06-01",
+      "branch_id":   "BR-001",
+      "email":       "tigist.alemu@gebar.et",
+      "phone":       "+251 911 111 002"
+    },
+    {
+      "employee_id": "EMP-003",
+      "first_name":  "Dawit",
+      "last_name":   "Bekele",
+      "position":    "Loan Officer",
+      "salary":      18000.00,
+      "hire_date":   "2019-09-10",
+      "branch_id":   "BR-001",
+      "email":       "dawit.bekele@gebar.et",
+      "phone":       "+251 911 111 003"
+    },
+    {
+      "employee_id": "EMP-004",
+      "first_name":  "Hana",
+      "last_name":   "Tadesse",
+      "position":    "Customer Service Officer",
+      "salary":      13500.00,
+      "hire_date":   "2021-01-15",
+      "branch_id":   "BR-001",
+      "email":       "hana.tadesse@gebar.et",
+      "phone":       "+251 911 111 004"
+    },
+    {
+      "employee_id": "EMP-005",
+      "first_name":  "Yonas",
+      "last_name":   "Haile",
+      "position":    "Accountant",
+      "salary":      16000.00,
+      "hire_date":   "2017-11-20",
+      "branch_id":   "BR-001",
+      "email":       "yonas.haile@gebar.et",
+      "phone":       "+251 911 111 005"
+    },
+    {
+      "employee_id": "EMP-006",
+      "first_name":  "Meron",
+      "last_name":   "Tesfaye",
+      "position":    "Branch Manager",
+      "salary":      27000.00,
+      "hire_date":   "2016-08-05",
+      "branch_id":   "BR-002",
+      "email":       "meron.tesfaye@gebar.et",
+      "phone":       "+251 911 222 001"
+    },
+    {
+      "employee_id": "EMP-007",
+      "first_name":  "Solomon",
+      "last_name":   "Worku",
+      "position":    "Teller",
+      "salary":      11500.00,
+      "hire_date":   "2022-03-01",
+      "branch_id":   "BR-002",
+      "email":       "solomon.worku@gebar.et",
+      "phone":       "+251 911 222 002"
+    },
+    {
+      "employee_id": "EMP-008",
+      "first_name":  "Blen",
+      "last_name":   "Getachew",
+      "position":    "Loan Officer",
+      "salary":      17500.00,
+      "hire_date":   "2020-07-12",
+      "branch_id":   "BR-002",
+      "email":       "blen.getachew@gebar.et",
+      "phone":       "+251 911 222 003"
+    },
+    {
+      "employee_id": "EMP-009",
+      "first_name":  "Robel",
+      "last_name":   "Mengistu",
+      "position":    "IT Officer",
+      "salary":      20000.00,
+      "hire_date":   "2019-04-18",
+      "branch_id":   "BR-002",
+      "email":       "robel.mengistu@gebar.et",
+      "phone":       "+251 911 222 004"
+    },
+    {
+      "employee_id": "EMP-010",
+      "first_name":  "Selamawit",
+      "last_name":   "Desta",
+      "position":    "Branch Manager",
+      "salary":      26500.00,
+      "hire_date":   "2015-12-01",
+      "branch_id":   "BR-003",
+      "email":       "selamawit.desta@gebar.et",
+      "phone":       "+251 911 333 001"
+    }
+  ],
+
+  "customers": [
+    {
+      "customer_id":       "CUST-10001",
+      "first_name":        "Selam",
+      "last_name":         "Tesfaye",
+      "date_of_birth":     "1998-05-15",
+      "gender":            "Female",
+      "address":           "Bole Sub-city, Addis Ababa",
+      "phone_number":      "+251 911 234 567",
+      "email":             "selam.tesfaye@gmail.com",
+      "national_id":       "1203456789",
+      "branch_id":         "BR-001",
+      "registration_date": "2026-04-28"
+    },
+    {
+      "customer_id":       "CUST-10002",
+      "first_name":        "Kebede",
+      "last_name":         "Mulugeta",
+      "date_of_birth":     "1985-11-20",
+      "gender":            "Male",
+      "address":           "Kirkos Sub-city, Addis Ababa",
+      "phone_number":      "+251 912 345 678",
+      "email":             "kebede.mulugeta@gmail.com",
+      "national_id":       "3301234567",
+      "branch_id":         "BR-001",
+      "registration_date": "2025-01-10"
+    },
+    {
+      "customer_id":       "CUST-10003",
+      "first_name":        "Aisha",
+      "last_name":         "Mohammed",
+      "date_of_birth":     "1992-07-03",
+      "gender":            "Female",
+      "address":           "Lideta Sub-city, Addis Ababa",
+      "phone_number":      "+251 913 456 789",
+      "email":             "aisha.mohammed@yahoo.com",
+      "national_id":       "5512345678",
+      "branch_id":         "BR-002",
+      "registration_date": "2024-06-22"
+    },
+    {
+      "customer_id":       "CUST-10004",
+      "first_name":        "Tesfaye",
+      "last_name":         "Kassa",
+      "date_of_birth":     "1978-03-12",
+      "gender":            "Male",
+      "address":           "Yeka Sub-city, Addis Ababa",
+      "phone_number":      "+251 914 567 890",
+      "email":             null,
+      "national_id":       "7823456789",
+      "branch_id":         "BR-002",
+      "registration_date": "2023-11-05"
+    },
+    {
+      "customer_id":       "CUST-10005",
+      "first_name":        "Hiwot",
+      "last_name":         "Getachew",
+      "date_of_birth":     "2000-09-30",
+      "gender":            "Female",
+      "address":           "Akaki Kality Sub-city, Addis Ababa",
+      "phone_number":      "+251 915 678 901",
+      "email":             "hiwot.getachew@outlook.com",
+      "national_id":       "9034567890",
+      "branch_id":         "BR-003",
+      "registration_date": "2026-02-14"
+    },
+    {
+      "customer_id":       "CUST-10006",
+      "first_name":        "Biruk",
+      "last_name":         "Hailu",
+      "date_of_birth":     "1990-12-25",
+      "gender":            "Male",
+      "address":           "Nifas Silk-Lafto, Addis Ababa",
+      "phone_number":      "+251 916 789 012",
+      "email":             "biruk.hailu@gmail.com",
+      "national_id":       "6145678901",
+      "branch_id":         "BR-003",
+      "registration_date": "2024-09-18"
+    }
+  ],
+
+  "accounts": [
+    {
+      "account_no":   "ACC-987654321",
+      "customer_id":  "CUST-10001",
+      "account_type": "Savings",
+      "balance":      40000.00,
+      "open_date":    "2026-04-28",
+      "status":       "Active",
+      "branch_id":    "BR-001"
+    },
+    {
+      "account_no":   "ACC-123456789",
+      "customer_id":  "CUST-10002",
+      "account_type": "Current",
+      "balance":      125000.00,
+      "open_date":    "2025-01-10",
+      "status":       "Active",
+      "branch_id":    "BR-001"
+    },
+    {
+      "account_no":   "ACC-234567890",
+      "customer_id":  "CUST-10002",
+      "account_type": "Savings",
+      "balance":      58000.00,
+      "open_date":    "2025-03-20",
+      "status":       "Active",
+      "branch_id":    "BR-001"
+    },
+    {
+      "account_no":   "ACC-345678901",
+      "customer_id":  "CUST-10003",
+      "account_type": "Savings",
+      "balance":      22000.00,
+      "open_date":    "2024-06-22",
+      "status":       "Active",
+      "branch_id":    "BR-002"
+    },
+    {
+      "account_no":   "ACC-456789012",
+      "customer_id":  "CUST-10004",
+      "account_type": "Current",
+      "balance":      310000.00,
+      "open_date":    "2023-11-05",
+      "status":       "Active",
+      "branch_id":    "BR-002"
+    },
+    {
+      "account_no":   "ACC-567890123",
+      "customer_id":  "CUST-10005",
+      "account_type": "Fixed Deposit",
+      "balance":      100000.00,
+      "open_date":    "2026-02-14",
+      "status":       "Active",
+      "branch_id":    "BR-003"
+    },
+    {
+      "account_no":   "ACC-678901234",
+      "customer_id":  "CUST-10006",
+      "account_type": "Savings",
+      "balance":      15000.00,
+      "open_date":    "2024-09-18",
+      "status":       "Active",
+      "branch_id":    "BR-003"
+    },
+    {
+      "account_no":   "ACC-789012345",
+      "customer_id":  "CUST-10001",
+      "account_type": "Current",
+      "balance":      0.00,
+      "open_date":    "2024-01-01",
+      "status":       "Closed",
+      "branch_id":    "BR-001"
+    }
+  ],
+
+  "loans": [
+    {
+      "loan_id":            "LN-2026001",
+      "customer_id":        "CUST-10001",
+      "branch_id":          "BR-001",
+      "loan_type":          "Education",
+      "loan_amount":        85000.00,
+      "interest_rate":      12.5,
+      "duration_in_months": 36,
+      "start_date":         "2026-05-01",
+      "purpose":            "To cover university tuition and living expenses",
+      "status":             "Pending",
+      "application_date":   "2026-04-28"
+    },
+    {
+      "loan_id":            "LN-2025002",
+      "customer_id":        "CUST-10002",
+      "branch_id":          "BR-001",
+      "loan_type":          "Business",
+      "loan_amount":        500000.00,
+      "interest_rate":      14.0,
+      "duration_in_months": 60,
+      "start_date":         "2025-02-01",
+      "purpose":            "Business expansion — new retail outlet in Merkato",
+      "status":             "Active",
+      "application_date":   "2025-01-20"
+    },
+    {
+      "loan_id":            "LN-2024003",
+      "customer_id":        "CUST-10003",
+      "branch_id":          "BR-002",
+      "loan_type":          "Personal",
+      "loan_amount":        50000.00,
+      "interest_rate":      15.0,
+      "duration_in_months": 24,
+      "start_date":         "2024-07-01",
+      "purpose":            "Home renovation",
+      "status":             "Active",
+      "application_date":   "2024-06-25"
+    },
+    {
+      "loan_id":            "LN-2023004",
+      "customer_id":        "CUST-10004",
+      "branch_id":          "BR-002",
+      "loan_type":          "Mortgage",
+      "loan_amount":        1200000.00,
+      "interest_rate":      11.5,
+      "duration_in_months": 120,
+      "start_date":         "2023-12-01",
+      "purpose":            "Purchase residential property",
+      "status":             "Active",
+      "application_date":   "2023-11-10"
+    },
+    {
+      "loan_id":            "LN-2026005",
+      "customer_id":        "CUST-10005",
+      "branch_id":          "BR-003",
+      "loan_type":          "Personal",
+      "loan_amount":        30000.00,
+      "interest_rate":      13.5,
+      "duration_in_months": 18,
+      "start_date":         "2026-03-01",
+      "purpose":            "Medical expenses",
+      "status":             "Approved",
+      "application_date":   "2026-02-20"
+    },
+    {
+      "loan_id":            "LN-2026006",
+      "customer_id":        "CUST-10006",
+      "branch_id":          "BR-003",
+      "loan_type":          "Vehicle",
+      "loan_amount":        200000.00,
+      "interest_rate":      13.0,
+      "duration_in_months": 48,
+      "start_date":         "2026-10-01",
+      "purpose":            "Purchase delivery vehicle for business",
+      "status":             "Rejected",
+      "application_date":   "2024-09-25"
+    }
+  ],
+
+  "transactions": [
+    {
+      "transaction_id":   "TRX-20260428001",
+      "account_no":       "ACC-987654321",
+      "transaction_type": "Deposit",
+      "amount":           15000.00,
+      "transaction_date": "2026-04-28",
+      "description":      "Initial deposit upon account opening",
+      "reference_number": "INIT-2026-001",
+      "branch_id":        "BR-001",
+      "balance_after":    15000.00
+    },
+    {
+      "transaction_id":   "TRX-20260430001",
+      "account_no":       "ACC-987654321",
+      "transaction_type": "Deposit",
+      "amount":           25000.00,
+      "transaction_date": "2026-04-30",
+      "description":      "Salary deposit for April 2026",
+      "reference_number": "SAL-2026-045",
+      "branch_id":        "BR-001",
+      "balance_after":    40000.00
+    },
+    {
+      "transaction_id":   "TRX-20260501001",
+      "account_no":       "ACC-987654321",
+      "transaction_type": "Withdrawal",
+      "amount":           5000.00,
+      "transaction_date": "2026-05-01",
+      "description":      "ATM cash withdrawal",
+      "reference_number": "ATM-2026-099",
+      "branch_id":        "BR-001",
+      "balance_after":    35000.00
+    },
+    {
+      "transaction_id":   "TRX-20250110001",
+      "account_no":       "ACC-123456789",
+      "transaction_type": "Deposit",
+      "amount":           100000.00,
+      "transaction_date": "2025-01-10",
+      "description":      "Initial business account funding",
+      "reference_number": "BUS-2025-001",
+      "branch_id":        "BR-001",
+      "balance_after":    100000.00
+    },
+    {
+      "transaction_id":   "TRX-20260401001",
+      "account_no":       "ACC-123456789",
+      "transaction_type": "Deposit",
+      "amount":           50000.00,
+      "transaction_date": "2026-04-01",
+      "description":      "Business revenue deposit",
+      "reference_number": "BUS-2026-015",
+      "branch_id":        "BR-001",
+      "balance_after":    150000.00
+    },
+    {
+      "transaction_id":   "TRX-20260415001",
+      "account_no":       "ACC-123456789",
+      "transaction_type": "Withdrawal",
+      "amount":           25000.00,
+      "transaction_date": "2026-04-15",
+      "description":      "Supplier payment",
+      "reference_number": "PAY-2026-030",
+      "branch_id":        "BR-001",
+      "balance_after":    125000.00
+    },
+    {
+      "transaction_id":   "TRX-20240622001",
+      "account_no":       "ACC-345678901",
+      "transaction_type": "Deposit",
+      "amount":           10000.00,
+      "transaction_date": "2024-06-22",
+      "description":      "Opening deposit",
+      "reference_number": "INIT-2024-003",
+      "branch_id":        "BR-002",
+      "balance_after":    10000.00
+    },
+    {
+      "transaction_id":   "TRX-20260301001",
+      "account_no":       "ACC-345678901",
+      "transaction_type": "Loan Disbursement",
+      "amount":           50000.00,
+      "transaction_date": "2024-07-01",
+      "description":      "Personal loan disbursement LN-2024003",
+      "reference_number": "LN-2024003-DISB",
+      "branch_id":        "BR-002",
+      "balance_after":    60000.00
+    },
+    {
+      "transaction_id":   "TRX-20260302001",
+      "account_no":       "ACC-345678901",
+      "transaction_type": "Loan Repayment",
+      "amount":           2500.00,
+      "transaction_date": "2026-03-01",
+      "description":      "Monthly loan repayment LN-2024003",
+      "reference_number": "LN-2024003-REP-20",
+      "branch_id":        "BR-002",
+      "balance_after":    22000.00
+    },
+    {
+      "transaction_id":   "TRX-20231105001",
+      "account_no":       "ACC-456789012",
+      "transaction_type": "Deposit",
+      "amount":           500000.00,
+      "transaction_date": "2023-11-05",
+      "description":      "Corporate account initial deposit",
+      "reference_number": "CORP-2023-001",
+      "branch_id":        "BR-002",
+      "balance_after":    500000.00
+    },
+    {
+      "transaction_id":   "TRX-20260420001",
+      "account_no":       "ACC-456789012",
+      "transaction_type": "Transfer",
+      "amount":           190000.00,
+      "transaction_date": "2026-04-20",
+      "description":      "Inter-branch transfer to Piassa supplier",
+      "reference_number": "TRF-2026-007",
+      "branch_id":        "BR-002",
+      "balance_after":    310000.00
+    }
+  ]
+}
