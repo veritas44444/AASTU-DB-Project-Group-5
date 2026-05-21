@@ -74,12 +74,11 @@ VALUES
 ('L004', 'C007', 'Car Loan', 250000, '2026-02-08', 'B003'),
 ('L005', 'C009', 'Personal Loan', 80000, '2026-02-10', 'B002');
 
-INSERT INTO Transactions 
-(TransactionID, AccountNo, BranchID, TransactionType, Amount, TransactionDate)
-VALUES
-('T001', 'A1001', 'B001', 'Deposit', 1000, '2026-03-01'),
-('T002', 'A1002', 'B002', 'Withdrawal', 500, '2026-03-02'),
-('T003', 'A1003', 'B003', 'Deposit', 2000, '2026-03-03'),
-('T004', 'A1004', 'B001', 'Withdrawal', 700, '2026-03-04'),
-('T005', 'A1005', 'B003', 'Deposit', 1500, '2026-03-05'),
-('T006', 'A1008', 'B001', 'Deposit', 2500, '2026-03-06');
+INSERT INTO transactions VALUES
+('T001','A1001','B001','Deposit',1000,'2026-03-01','Salary Deposit','TXN-001',NULL),
+
+('T002','A1001','B001','Loan Disbursement',500000,'2026-02-15','Home Loan Disbursed','LN-DIS-001','L001'),
+
+('T003','A1001','B001','Loan Repayment',18500,'2026-03-15','Monthly payment for Home Loan','LN-PAY-001','L001'),
+
+('T004','A1003','B003','Withdrawal',700,'2026-03-04','Cash Withdrawal','TXN-002',NULL);
