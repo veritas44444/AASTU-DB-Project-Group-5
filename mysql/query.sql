@@ -119,3 +119,20 @@ INSERT INTO audit_log VALUES
 ('AL009','loan','L002','UPDATE','E003','2026-04-05 08:55','Loan L002 outstanding balance updated'),
 
 ('AL010','transaction','T003','INSERT','E002','2026-05-10 16:40','Loan disbursement recorded as transaction');
+INSERT INTO Users
+(UserID, Username, PasswordHash, EmployeeID, CustomerID, Role, Status, LastLogin)
+VALUES
+
+('U001', 'admin', 'Admin123', 'E001', NULL, 'manager', 'active', '2026-05-20 10:30:00'),
+
+('U002', 'teller_b001', 'Tell001', 'E002', NULL, 'teller', 'active', '2026-05-20 09:15:00'),
+
+('U003', 'accountant_b002', 'Acc002', 'E003', NULL, 'manager', 'active', '2026-05-19 14:45:00'),
+
+('U004', 'teller_b003', 'Tell003', 'E005', NULL, 'teller', 'active', '2026-05-20 08:50:00'),
+
+('U005', 'abebe_bekele', 'Abebe123', NULL, 'C001', 'customer', 'active', '2026-05-18 16:20:00'),
+
+('U006', 'hana_tesfaye', 'Hana123', NULL, 'C002', 'customer', 'active', '2026-05-19 11:10:00'),
+
+('U007', 'meron_alemu', 'Meron123', NULL, 'C003', 'customer', 'active', NULL);
