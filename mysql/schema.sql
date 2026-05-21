@@ -187,3 +187,21 @@ CREATE TABLE users (
 
     CHECK (role IN ('manager', 'teller', 'customer'))
 );
+CREATE TABLE AuditLog (
+    LogID VARCHAR(15) PRIMARY KEY,
+
+    TableName VARCHAR(100),
+    RecordID VARCHAR(20),
+
+    Action VARCHAR(10)
+    CHECK (Action IN ('INSERT', 'UPDATE', 'DELETE')),
+
+    ChangedBy VARCHAR(10),
+
+    ChangedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+    OldValues TEXT,
+    NewValues TEXT,
+
+    FOREIGN KEY (ChangedBy)
+    REFERENCES EMPLOYEE(EmployeeID)
