@@ -46,4 +46,36 @@ branch_id VARCHAR(10),
  FOREIGN KEY(customer_id) REFERENCES customer(customer_id),
  FOREIGN KEY(branch_id) REFERENCES Branch(branch_id)
  );
+ GO 
+ DROP TABLE IF EXISTS Transactions;
+DROP TABLE IF EXISTS Loan;
+DROP TABLE IF EXISTS Employee;
+GO
+ CREATE TABLE Loan (
+    LoanID VARCHAR(10) PRIMARY KEY,
+    CustomerID VARCHAR(10),
+    LoanType VARCHAR(50),
+    Amount DECIMAL(10,2),
+    ApplicationDate DATE,
+    BranchID VARCHAR(10)
+);
+CREATE TABLE Transactions (
+    TransactionID VARCHAR(10) PRIMARY KEY,
+    AccountNo VARCHAR(10),
+    BranchID VARCHAR(10),
+    TransactionType VARCHAR(20),
+    Amount DECIMAL(10,2),
+    TransactionDate DATE
+);
+
+CREATE TABLE Employee (
+    EmployeeID VARCHAR(10) PRIMARY KEY,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    Position VARCHAR(50),
+    Email VARCHAR(100),
+    Phone VARCHAR(20),
+    Salary DECIMAL(10,2),
+    BranchID VARCHAR(10)
+);
  
