@@ -178,8 +178,7 @@ CREATE TABLE users (
 
     last_login DATETIME,
 
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-
+    
     FOREIGN KEY (employee_id)
         REFERENCES Employee(employee_id),
 
