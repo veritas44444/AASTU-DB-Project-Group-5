@@ -99,3 +99,23 @@ INSERT INTO loan_payments VALUES
 
 ('P005','L004','2026-03-22',10833.33,7500.00,3333.33,212500.00,'E003');
 
+INSERT INTO audit_log VALUES
+('AL001','customer','C001','INSERT','E001','2026-01-05 09:15','New customer C001 (Abebe Bekele) created'),
+
+('AL002','account','A1001','INSERT','E002','2026-01-11 10:30','Savings account A1001 created for customer C001'),
+
+('AL003','loan','L001','INSERT','E003','2026-02-10 14:45','Home Loan L001 approved and created'),
+
+('AL004','loan','L001','UPDATE','E001','2026-02-15 11:20','Loan L001 disbursed - status updated'),
+
+('AL005','transaction','T001','INSERT','E002','2026-03-01 09:05','Deposit transaction T001 recorded'),
+
+('AL006','loan_payments','P001','INSERT','E001','2026-03-15 10:30','First monthly payment for loan L001 recorded'),
+
+('AL007','account','A1001','UPDATE','E002','2026-03-15 10:31','Account balance updated after loan payment'),
+
+('AL008','customer','C003','UPDATE','E004','2026-04-02 14:10','Customer C003 phone number updated'),
+
+('AL009','loan','L002','UPDATE','E003','2026-04-05 08:55','Loan L002 outstanding balance updated'),
+
+('AL010','transaction','T003','INSERT','E002','2026-05-10 16:40','Loan disbursement recorded as transaction');
