@@ -1,6 +1,6 @@
 USE GEBAR_COMMERCIAL_BANK;
 GO
-INSERT INTO Branch(BranchID, BranchName, City, Phone, ManagerID)
+INSERT INTO Branch(BranchID, BranchName, Address, Phone, ManagerID)
 VALUES
 ('B001','Main Branch','Addis Ababa','0911000001','E001'),
 ('B002','Bole Branch','Addis Ababa','0911000002','E003'),
@@ -66,13 +66,6 @@ VALUES
 ('E005', 'Eden', 'Shiferaw', 'Customer Service', 'eden@gcb.com', '0913000005', 10000, 'B003'),
 
 ('E006', 'Solomon', 'Wondimu', 'Manager', 'solomon@gcb.com', '0913000006', 25000, 'B003');
-INSERT INTO Loan (LoanID, CustomerID, LoanType, Amount, ApplicationDate, BranchID)
-VALUES
-('L001', 'C001', 'Home Loan', 500000, '2026-02-01', 'B001'),
-('L002', 'C003', 'Business Loan', 300000, '2026-02-04', 'B003'),
-('L003', 'C005', 'Education Loan', 120000, '2026-02-06', 'B003'),
-('L004', 'C007', 'Car Loan', 250000, '2026-02-08', 'B003'),
-('L005', 'C009', 'Personal Loan', 80000, '2026-02-10', 'B002');
 
 INSERT INTO transactions VALUES
 ('T001','A1001','B001','Deposit',1000,'2026-03-01','Salary Deposit','TXN-001',NULL),
@@ -82,3 +75,27 @@ INSERT INTO transactions VALUES
 ('T003','A1001','B001','Loan Repayment',18500,'2026-03-15','Monthly payment for Home Loan','LN-PAY-001','L001'),
 
 ('T004','A1003','B003','Withdrawal',700,'2026-03-04','Cash Withdrawal','TXN-002',NULL);
+
+INSERT INTO loans VALUES
+ 
+('L001','C001','B001','Home Loan',500000,18.50,36,'2026-02-01','2026-02-10','2026-02-15',18500.00,666000,480000,'2026-11-15','Active'),
+
+('L002','C003','B003','Business Loan',300000,16.00,24,'2026-02-04','2026-02-12','2026-02-18',15833.33,380000,250000,'2026-12-18','Active'),
+
+('L003','C005','B003','Education Loan',120000,15.00,18,'2026-02-06','2026-02-14','2026-02-20',7666.67,138000,105000,'2026-11-20','Active'),
+
+('L004','C007','B003','Car Loan',250000,17.00,30,'2026-02-08','2026-02-16','2026-02-22',10833.33,325000,220000,'2026-12-22','Active'),
+
+('L005','C009','B002','Personal Loan',80000,19.00,12,'2026-02-10','2026-02-15','2026-02-25',7333.33,88000,65000,'2026-11-25','Active');
+INSERT INTO loan_payments VALUES
+
+('P001','L001','2026-03-15',18500.00,12000.00,6500.00,468000.00,'E001'),
+
+('P002','L001','2026-04-15',18500.00,12500.00,6000.00,455500.00,'E001'),
+
+('P003','L002','2026-03-18',15833.33,11000.00,4833.33,239000.00,'E006'),
+
+('P004','L003','2026-03-20',7666.67,5500.00,2166.67,99500.00,'E006'),
+
+('P005','L004','2026-03-22',10833.33,7500.00,3333.33,212500.00,'E003');
+
