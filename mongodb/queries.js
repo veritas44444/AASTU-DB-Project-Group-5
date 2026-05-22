@@ -24,7 +24,7 @@ db.createCollection("branches", {
       properties: {
         branch_id:    { bsonType: "string", description: "Unique branch identifier (PK)" },
         branch_name:  { bsonType: "string", description: "Name of the branch" },
-        address:      { bsonType: "string", description: "Physical address" },
+        address:      { bsonType: "string", description: "City / physical address" },
         phone_number: { bsonType: "string", description: "Branch contact number" },
         manager_id:   { bsonType: ["string", "null"], description: "FK → employees.employee_id" },
       },
@@ -60,7 +60,7 @@ db.createCollection("customers", {
   validationAction: "warn",
 });
 
-// ── 2.3  Accounts 
+// ── 2.3  Accounts
 db.createCollection("accounts", {
   validator: {
     $jsonSchema: {
@@ -72,7 +72,7 @@ db.createCollection("accounts", {
         account_type: { enum: ["Savings", "Current", "Fixed Deposit"] },
         balance:      { bsonType: "double", minimum: 0 },
         open_date:    { bsonType: "date" },
-        status:       { enum: ["Active", "Inactive", "Closed", "Frozen"] },
+        status:       { enum: ["Active", "Dormant", "Inactive", "Closed", "Frozen"] },
         branch_id:    { bsonType: "string", description: "FK → branches.branch_id" },
       },
     },
@@ -80,34 +80,38 @@ db.createCollection("accounts", {
   validationAction: "warn",
 });
 
-// ── 2.4  Loans 
+// ── 2.4  Loans
 db.createCollection("loans", {
   validator: {
     $jsonSchema: {
       bsonType: "object",
       required: [
         "loan_id", "customer_id", "branch_id", "loan_type",
-        "loan_amount", "interest_rate", "duration_in_months", "start_date", "status", "purpose", "application_date"
+        "loan_amount", "interest_rate", "duration_months", "application_date", "status"
       ],
       properties: {
-        loan_id:             { bsonType: "string" },
-        customer_id:         { bsonType: "string", description: "FK → customers.customer_id" },
-        branch_id:           { bsonType: "string", description: "FK → branches.branch_id" },
-        loan_type:           { enum: ["Personal", "Business", "Education", "Mortgage", "Vehicle"] },
-        loan_amount:         { bsonType: "double", minimum: 0 },
-        interest_rate:       { bsonType: "double", minimum: 0, maximum: 100 },
-        duration_in_months:  { bsonType: "int",    minimum: 1 },
-        start_date:          { bsonType: "date" },
-        purpose:             { bsonType: "string" },
-        status:              { enum: ["Pending", "Approved", "Active", "Closed", "Rejected", "Defaulted"] },
-        application_date:    { bsonType: "date" },
+        loan_id:              { bsonType: "string" },
+        customer_id:          { bsonType: "string", description: "FK → customers.customer_id" },
+        branch_id:            { bsonType: "string", description: "FK → branches.branch_id" },
+        loan_type:            { enum: ["Home Loan", "Business Loan", "Education Loan", "Car Loan", "Personal Loan"] },
+        loan_amount:          { bsonType: "double", minimum: 0 },
+        interest_rate:        { bsonType: "double", minimum: 0, maximum: 100 },
+        duration_months:      { bsonType: "int",    minimum: 1 },
+        application_date:     { bsonType: "date" },
+        approval_date:        { bsonType: ["date", "null"] },
+        disbursement_date:    { bsonType: ["date", "null"] },
+        monthly_installment:  { bsonType: ["double", "null"] },
+        total_payable:        { bsonType: ["double", "null"] },
+        outstanding_balance:  { bsonType: ["double", "null"] },
+        next_due_date:        { bsonType: ["date", "null"] },
+        status:               { enum: ["Pending", "Approved", "Active", "Closed", "Rejected", "Defaulted"] },
       },
     },
   },
   validationAction: "warn",
 });
 
-// ── 2.5  Transactions 
+// ── 2.5  Transactions
 db.createCollection("transactions", {
   validator: {
     $jsonSchema: {
@@ -121,6 +125,7 @@ db.createCollection("transactions", {
         transaction_date: { bsonType: "date" },
         description:      { bsonType: ["string", "null"] },
         reference_number: { bsonType: ["string", "null"] },
+        loan_id:          { bsonType: ["string", "null"], description: "FK → loans.loan_id (for loan-related transactions)" },
         branch_id:        { bsonType: "string", description: "FK → branches.branch_id" },
       },
     },
@@ -128,22 +133,22 @@ db.createCollection("transactions", {
   validationAction: "warn",
 });
 
-// ── 2.6  Employees ───
+// ── 2.6  Employees
 db.createCollection("employees", {
   validator: {
     $jsonSchema: {
       bsonType: "object",
-      required: ["employee_id", "first_name", "last_name", "position", "salary", "hire_date", "branch_id", "email", "phone"],
+      required: ["employee_id", "first_name", "last_name", "position", "salary", "branch_id", "email", "phone_number"],
       properties: {
-        employee_id: { bsonType: "string" },
-        first_name:  { bsonType: "string" },
-        last_name:   { bsonType: "string" },
-        position:    { bsonType: "string" },
-        salary:      { bsonType: "double", minimum: 0 },
-        hire_date:   { bsonType: "date" },
-        branch_id:   { bsonType: "string", description: "FK → branches.branch_id" },
-        email:       { bsonType: "string" },
-        phone:       { bsonType: "string" },
+        employee_id:  { bsonType: "string" },
+        first_name:   { bsonType: "string" },
+        last_name:    { bsonType: "string" },
+        position:     { bsonType: "string" },
+        salary:       { bsonType: "double", minimum: 0 },
+        hire_date:    { bsonType: ["date", "null"] },
+        branch_id:    { bsonType: "string", description: "FK → branches.branch_id" },
+        email:        { bsonType: "string" },
+        phone_number: { bsonType: "string" },
       },
     },
   },
@@ -190,15 +195,15 @@ function parseDates(doc, dateFields) {
 const seed = JSON.parse(fs.readFileSync("collections.json", "utf8"));
 
 db.branches.insertMany(seed.branches);
-db.employees.insertMany(seed.employees.map(e => parseDates(e, ["hire_date"])));
+db.employees.insertMany(seed.employees);
 db.customers.insertMany(seed.customers.map(c => parseDates(c, ["date_of_birth", "registration_date"])));
 db.accounts.insertMany(seed.accounts.map(a => parseDates(a, ["open_date"])));
-db.loans.insertMany(seed.loans.map(l => parseDates(l, ["start_date", "application_date"])));
+db.loans.insertMany(seed.loans.map(l => parseDates(l, ["application_date", "approval_date", "disbursement_date", "next_due_date"])));
 db.transactions.insertMany(seed.transactions.map(t => parseDates(t, ["transaction_date"])));
 
 print("✔  Seed data inserted from collections.json.");
 
-//  SECTION 5 — CRUD OPERATIONS 
+//  SECTION 5 — CRUD OPERATIONS
 
 print("\n═══════════════════════════════════════════════════════");
 print("  SECTION 5 — CRUD OPERATIONS EXAMPLES");
@@ -207,44 +212,44 @@ print("════════════════════════�
 // 5.1 CREATE: Register a new customer
 print("\n─ 5.1 INSERT new customer ─");
 db.customers.insertOne({
-  customer_id:       "CUST-10007",
+  customer_id:       "C012",
   first_name:        "Liya",
   last_name:         "Abebe",
   date_of_birth:     new Date("2001-03-08"),
   gender:            "Female",
   address:           "Gulele Sub-city, Addis Ababa",
-  phone_number:      "+251 917 890 123",
-  email:             "liya.abebe@gmail.com",
-  national_id:       "1029876543",
-  branch_id:         "BR-003",
+  phone_number:      "0912000012",
+  email:             "liya.abebe@example.com",
+  national_id:       "3340987654321098",
+  branch_id:         "B003",
   registration_date: new Date(),
 });
-print("  New customer CUST-10007 inserted.");
+print("  New customer C012 inserted.");
 
 // 5.2 READ: Find a customer by ID
 print("\n─ 5.2 FIND customer by customer_id ─");
 printjson(db.customers.findOne(
-  { customer_id: "CUST-10001" },
+  { customer_id: "C001" },
   { _id: 0, first_name: 1, last_name: 1, phone_number: 1, branch_id: 1 }
 ));
 
 // 5.3 UPDATE: Update customer phone number
 print("\n─ 5.3 UPDATE customer phone ─");
 db.customers.updateOne(
-  { customer_id: "CUST-10001" },
-  { $set: { phone_number: "+251 911 999 001", address: "Bole Atlas, Addis Ababa" } }
+  { customer_id: "C001" },
+  { $set: { phone_number: "0912999001", address: "Bole Atlas, Addis Ababa" } }
 );
-print("  CUST-10001 phone & address updated.");
+print("  C001 phone & address updated.");
 
 // 5.4 DELETE: Remove a closed account
 print("\n─ 5.4 DELETE closed account ─");
-const delResult = db.accounts.deleteOne({ account_no: "ACC-789012345", status: "Closed" });
+const delResult = db.accounts.deleteOne({ account_no: "A1009", status: "Closed" });
 print(`  Deleted ${delResult.deletedCount} closed account(s).`);
 
-// 5.5 DEPOSIT: Update balance and insert transaction 
+// 5.5 DEPOSIT: Update balance and insert transaction
 print("\n─ 5.5 DEPOSIT — update balance + insert transaction ─");
 const depositAmount  = 10000.00;
-const depositAccount = "ACC-987654321";
+const depositAccount = "A1001";
 const acc = db.accounts.findOne({ account_no: depositAccount });
 if (acc) {
   const newBalance = acc.balance + depositAmount;
@@ -253,14 +258,14 @@ if (acc) {
     { $set: { balance: newBalance } }
   );
   db.transactions.insertOne({
-    transaction_id:   "TRX-20260501002",
+    transaction_id:   "T005",
     account_no:       depositAccount,
     transaction_type: "Deposit",
     amount:           depositAmount,
     transaction_date: new Date(),
     description:      "Walk-in cash deposit",
     reference_number: "CASH-2026-100",
-    branch_id:        "BR-001"
+    branch_id:        "B001"
   });
   print(`  Deposited ${depositAmount} ETB. New balance: ${newBalance} ETB.`);
 }
@@ -268,7 +273,7 @@ if (acc) {
 // 5.6 WITHDRAWAL: Debit with balance check
 print("\n─ 5.6 WITHDRAWAL — debit with balance guard ─");
 const withdrawAmount  = 5000.00;
-const withdrawAccount = "ACC-987654321";
+const withdrawAccount = "A1001";
 const wAcc = db.accounts.findOne({ account_no: withdrawAccount });
 if (wAcc && wAcc.balance >= withdrawAmount) {
   const wNewBalance = wAcc.balance - withdrawAmount;
@@ -277,14 +282,14 @@ if (wAcc && wAcc.balance >= withdrawAmount) {
     { $set: { balance: wNewBalance } }
   );
   db.transactions.insertOne({
-    transaction_id:   "TRX-20260501003",
+    transaction_id:   "T006",
     account_no:       withdrawAccount,
     transaction_type: "Withdrawal",
     amount:           withdrawAmount,
     transaction_date: new Date(),
     description:      "Counter withdrawal",
     reference_number: "WDR-2026-050",
-    branch_id:        "BR-001"
+    branch_id:        "B001"
   });
   print(`  Withdrawn ${withdrawAmount} ETB. New balance: ${wNewBalance} ETB.`);
 } else {
@@ -293,8 +298,8 @@ if (wAcc && wAcc.balance >= withdrawAmount) {
 
 // 5.7 TRANSFER: Between two accounts
 print("\n─ 5.7 TRANSFER between accounts ─");
-const fromAcc  = "ACC-123456789";
-const toAcc    = "ACC-234567890";
+const fromAcc  = "A1008";
+const toAcc    = "A1002";
 const tfAmount = 15000.00;
 const srcAcc   = db.accounts.findOne({ account_no: fromAcc });
 const dstAcc   = db.accounts.findOne({ account_no: toAcc });
@@ -304,24 +309,24 @@ if (srcAcc && dstAcc && srcAcc.balance >= tfAmount) {
   const refNo = "TRF-2026-888";
   db.transactions.insertMany([
     {
-      transaction_id:   "TRX-20260501004",
+      transaction_id:   "T007",
       account_no:       fromAcc,
       transaction_type: "Transfer",
       amount:           tfAmount,
       transaction_date: new Date(),
       description:      `Outgoing transfer → ${toAcc}`,
       reference_number: refNo,
-      branch_id:        "BR-001"
+      branch_id:        "B001"
     },
     {
-      transaction_id:   "TRX-20260501005",
+      transaction_id:   "T008",
       account_no:       toAcc,
       transaction_type: "Transfer",
       amount:           tfAmount,
       transaction_date: new Date(),
       description:      `Incoming transfer ← ${fromAcc}`,
       reference_number: refNo,
-      branch_id:        "BR-001"
+      branch_id:        "B002"
     }
   ]);
   print(`  Transferred ${tfAmount} ETB from ${fromAcc} to ${toAcc}. Ref: ${refNo}`);
@@ -330,42 +335,46 @@ if (srcAcc && dstAcc && srcAcc.balance >= tfAmount) {
 // 5.8 LOAN APPLICATION
 print("\n─ 5.8 LOAN APPLICATION ─");
 db.loans.insertOne({
-  loan_id:            "LN-2026007",
-  customer_id:        "CUST-10007",
-  branch_id:          "BR-003",
-  loan_type:          "Personal",
-  loan_amount:        40000.00,
-  interest_rate:      14.0,
-  duration_in_months: 24,
-  start_date:         new Date("2026-06-01"),
-  purpose:            "Entrepreneurship startup costs",
-  status:             "Pending",
-  application_date:   new Date(),
+  loan_id:             "L006",
+  customer_id:         "C012",
+  branch_id:           "B003",
+  loan_type:           "Personal Loan",
+  loan_amount:         40000.00,
+  interest_rate:       14.0,
+  duration_months:     24,
+  application_date:    new Date(),
+  approval_date:       null,
+  disbursement_date:   null,
+  monthly_installment: null,
+  total_payable:       null,
+  outstanding_balance: null,
+  next_due_date:       null,
+  status:              "Pending",
 });
-print("  Loan LN-2026007 for CUST-10007 submitted.");
+print("  Loan L006 for C012 submitted.");
 
 // 5.9 LOAN STATUS UPDATE
 print("\n─ 5.9 APPROVE loan ─");
 db.loans.updateOne(
-  { loan_id: "LN-2026007" },
+  { loan_id: "L006" },
   { $set: { status: "Approved" } }
 );
-print("  Loan LN-2026007 status changed to Approved.");
+print("  Loan L006 status changed to Approved.");
 
 
-//  SECTION 6 — AGGREGATION PIPELINES 
+//  SECTION 6 — AGGREGATION PIPELINES
 
 print("  SECTION 6 — AGGREGATION PIPELINES");
 
 // 6.1 Account statement — last 10 transactions (calculate running balance on the fly)
-print("\n─ 6.1 Account Statement for ACC-987654321 (latest 10 with running balance) ─");
+print("\n─ 6.1 Account Statement for A1001 (latest 10 with running balance) ─");
 const txns = db.transactions.find(
-  { account_no: "ACC-987654321" },
+  { account_no: "A1001" },
   { _id: 0, transaction_id: 1, transaction_type: 1, amount: 1, transaction_date: 1, description: 1 }
 ).sort({ transaction_date: -1 }).limit(10).toArray();
 
 txns.reverse();
-let running = db.accounts.findOne({ account_no: "ACC-987654321" }).balance;
+let running = db.accounts.findOne({ account_no: "A1001" }).balance;
 for (let i = txns.length-1; i >= 0; i--) {
   if (txns[i].transaction_type === "Deposit" || txns[i].transaction_type === "Loan Disbursement") {
     running -= txns[i].amount;
@@ -553,7 +562,7 @@ printjson(
   ]).toArray()
 );
 
-// 6.8 Top 5 depositors (using accounts balance, not transaction sum)
+// 6.8 Top 5 depositors (by account balance)
 print("\n─ 6.8 Top 5 customers by account balance ─");
 printjson(
   db.accounts.aggregate([
@@ -611,7 +620,6 @@ printjson(
         loan_amount:      1,
         branch_id:        1,
         application_date: 1,
-        purpose:          1,
         full_name: {
           $concat: [
             { $arrayElemAt: ["$customer.first_name", 0] }, " ",
@@ -653,9 +661,9 @@ printjson(
 
 
 
-//  SECTION 7 — Number of records in each collections
+//  SECTION 7 — Number of records in each collection
 
-print("  SECTION 8 — VERIFICATION SUMMARY");
+print("  SECTION 7 — VERIFICATION SUMMARY");
 print(`  Branches:     ${db.branches.countDocuments()}`);
 print(`  Customers:    ${db.customers.countDocuments()}`);
 print(`  Accounts:     ${db.accounts.countDocuments()}`);

@@ -1,0 +1,471 @@
+{
+  "branches": [
+    {
+      "branch_id": "B001",
+      "branch_name": "Main Branch",
+      "address": "Addis Ababa",
+      "phone_number": "0911000001",
+      "manager_id": "E001"
+    },
+    {
+      "branch_id": "B002",
+      "branch_name": "Bole Branch",
+      "address": "Addis Ababa",
+      "phone_number": "0911000002",
+      "manager_id": "E003"
+    },
+    {
+      "branch_id": "B003",
+      "branch_name": "Hara Branch",
+      "address": "Adama",
+      "phone_number": "0911000003",
+      "manager_id": "E006"
+    },
+    {
+      "branch_id": "B004",
+      "branch_name": "Arada Branch",
+      "address": "Addis Ababa",
+      "phone_number": "0911000004",
+      "manager_id": "E004"
+    }
+  ],
+  "employees": [
+    {
+      "employee_id": "E001",
+      "first_name": "Tsegaye",
+      "last_name": "Endale",
+      "position": "Manager",
+      "email": "tsegaye@gcb.com",
+      "phone_number": "0913000001",
+      "salary": 25000,
+      "branch_id": "B001"
+    },
+    {
+      "employee_id": "E002",
+      "first_name": "Helen",
+      "last_name": "Fikadu",
+      "position": "Cashier",
+      "email": "helen@gcb.com",
+      "phone_number": "0913000002",
+      "salary": 12000,
+      "branch_id": "B001"
+    },
+    {
+      "employee_id": "E003",
+      "first_name": "Yonatan",
+      "last_name": "Abay",
+      "position": "Accountant",
+      "email": "yonatan@gcb.com",
+      "phone_number": "0913000003",
+      "salary": 15000,
+      "branch_id": "B002"
+    },
+    {
+      "employee_id": "E004",
+      "first_name": "Mulugeta",
+      "last_name": "Birhanu",
+      "position": "Teller",
+      "email": "mulugeta@gcb.com",
+      "phone_number": "0913000004",
+      "salary": 11000,
+      "branch_id": "B002"
+    },
+    {
+      "employee_id": "E005",
+      "first_name": "Eden",
+      "last_name": "Shiferaw",
+      "position": "Customer Service",
+      "email": "eden@gcb.com",
+      "phone_number": "0913000005",
+      "salary": 10000,
+      "branch_id": "B003"
+    },
+    {
+      "employee_id": "E006",
+      "first_name": "Solomon",
+      "last_name": "Wondimu",
+      "position": "Manager",
+      "email": "solomon@gcb.com",
+      "phone_number": "0913000006",
+      "salary": 25000,
+      "branch_id": "B003"
+    }
+  ],
+  "customers": [
+    {
+      "customer_id": "C001",
+      "first_name": "Abebe",
+      "last_name": "Bekele",
+      "gender": "Male",
+      "phone_number": "0912000001",
+      "address": "Addis Ababa",
+      "registration_date": "2026-01-05",
+      "branch_id": "B001",
+      "date_of_birth": "1965-11-20",
+      "email": "abebe.bekele@example.com",
+      "national_id": "7548658496973896"
+    },
+    {
+      "customer_id": "C002",
+      "first_name": "Hana",
+      "last_name": "Tesfaye",
+      "gender": "Female",
+      "phone_number": "0912000002",
+      "address": "Addis Ababa",
+      "registration_date": "2026-01-06",
+      "branch_id": "B002",
+      "date_of_birth": "1988-09-07",
+      "email": "hana.tesfaye@example.com",
+      "national_id": "9604299709214572"
+    },
+    {
+      "customer_id": "C003",
+      "first_name": "Meron",
+      "last_name": "Alemu",
+      "gender": "Female",
+      "phone_number": "0912000003",
+      "address": "Adama",
+      "registration_date": "2026-01-08",
+      "branch_id": "B003",
+      "date_of_birth": "1997-11-17",
+      "email": "meron.alemu@example.com",
+      "national_id": "6057079456919581"
+    },
+    {
+      "customer_id": "C004",
+      "first_name": "Dawit",
+      "last_name": "Mekonnen",
+      "gender": "Male",
+      "phone_number": "0912000004",
+      "address": "Addis Ababa",
+      "registration_date": "2026-01-10",
+      "branch_id": "B001",
+      "date_of_birth": "1978-05-12",
+      "email": "dawit.mekonnen@example.com",
+      "national_id": "4026768435774065"
+    },
+    {
+      "customer_id": "C005",
+      "first_name": "Selamawit",
+      "last_name": "Guta",
+      "gender": "Female",
+      "phone_number": "0912000005",
+      "address": "Adama",
+      "registration_date": "2026-01-12",
+      "branch_id": "B003",
+      "date_of_birth": "1995-03-25",
+      "email": "selamawit.guta@example.com",
+      "national_id": "8579317338025766"
+    },
+    {
+      "customer_id": "C006",
+      "first_name": "Kibrom",
+      "last_name": "Tadesse",
+      "gender": "Male",
+      "phone_number": "0912000006",
+      "address": "Addis Ababa",
+      "registration_date": "2026-01-13",
+      "branch_id": "B002",
+      "date_of_birth": "1982-07-18",
+      "email": "kibrom.tadesse@example.com",
+      "national_id": "6794683898200034"
+    },
+    {
+      "customer_id": "C007",
+      "first_name": "Eyerusalem",
+      "last_name": "Haile",
+      "gender": "Female",
+      "phone_number": "0912000007",
+      "address": "Adama",
+      "registration_date": "2026-01-15",
+      "branch_id": "B003",
+      "date_of_birth": "2000-12-05",
+      "email": "eyerusalem.haile@example.com",
+      "national_id": "5126049741877130"
+    },
+    {
+      "customer_id": "C008",
+      "first_name": "Samuel",
+      "last_name": "Assefa",
+      "gender": "Male",
+      "phone_number": "0912000008",
+      "address": "Addis Ababa",
+      "registration_date": "2026-01-18",
+      "branch_id": "B001",
+      "date_of_birth": "1972-09-30",
+      "email": "samuel.assefa@example.com",
+      "national_id": "6587177196930252"
+    },
+    {
+      "customer_id": "C009",
+      "first_name": "Rahel",
+      "last_name": "Solomon",
+      "gender": "Female",
+      "phone_number": "0912000009",
+      "address": "Addis Ababa",
+      "registration_date": "2026-01-19",
+      "branch_id": "B002",
+      "date_of_birth": "1990-04-15",
+      "email": "rahel.solomon@example.com",
+      "national_id": "7241739168082662"
+    },
+    {
+      "customer_id": "C010",
+      "first_name": "Nati",
+      "last_name": "Yared",
+      "gender": "Male",
+      "phone_number": "0912000010",
+      "address": "Adama",
+      "registration_date": "2026-01-20",
+      "branch_id": "B003",
+      "date_of_birth": "1985-06-22",
+      "email": "nati.yared@example.com",
+      "national_id": "4161137359341012"
+    },
+    {
+      "customer_id": "C011",
+      "first_name": "Selam",
+      "last_name": "Kebede",
+      "gender": "Female",
+      "phone_number": "0912000011",
+      "address": "Addis Ababa",
+      "registration_date": "2026-01-21",
+      "branch_id": "B004",
+      "date_of_birth": "1992-08-14",
+      "email": "selam.kebede@example.com",
+      "national_id": "198967890123456"
+    }
+  ],
+  "accounts": [
+    {
+      "account_no": "A1001",
+      "customer_id": "C001",
+      "branch_id": "B001",
+      "account_type": "Savings",
+      "balance": 5000,
+      "status": "Active",
+      "open_date": "2026-01-11"
+    },
+    {
+      "account_no": "A1002",
+      "customer_id": "C002",
+      "branch_id": "B002",
+      "account_type": "Current",
+      "balance": 12000,
+      "status": "Active",
+      "open_date": "2026-02-05"
+    },
+    {
+      "account_no": "A1003",
+      "customer_id": "C003",
+      "branch_id": "B003",
+      "account_type": "Savings",
+      "balance": 8000,
+      "status": "Active",
+      "open_date": "2026-02-01"
+    },
+    {
+      "account_no": "A1004",
+      "customer_id": "C004",
+      "branch_id": "B001",
+      "account_type": "Savings",
+      "balance": 3000,
+      "status": "Dormant",
+      "open_date": "2026-01-15"
+    },
+    {
+      "account_no": "A1005",
+      "customer_id": "C005",
+      "branch_id": "B003",
+      "account_type": "Current",
+      "balance": 15000,
+      "status": "Active",
+      "open_date": "2026-01-20"
+    },
+    {
+      "account_no": "A1006",
+      "customer_id": "C006",
+      "branch_id": "B002",
+      "account_type": "Savings",
+      "balance": 7000,
+      "status": "Active",
+      "open_date": "2026-01-25"
+    },
+    {
+      "account_no": "A1007",
+      "customer_id": "C007",
+      "branch_id": "B003",
+      "account_type": "Savings",
+      "balance": 4500,
+      "status": "Active",
+      "open_date": "2026-01-18"
+    },
+    {
+      "account_no": "A1008",
+      "customer_id": "C008",
+      "branch_id": "B001",
+      "account_type": "Current",
+      "balance": 20000,
+      "status": "Active",
+      "open_date": "2026-01-22"
+    },
+    {
+      "account_no": "A1009",
+      "customer_id": "C009",
+      "branch_id": "B002",
+      "account_type": "Savings",
+      "balance": 6000,
+      "status": "Closed",
+      "open_date": "2026-01-30"
+    },
+    {
+      "account_no": "A1010",
+      "customer_id": "C010",
+      "branch_id": "B003",
+      "account_type": "Current",
+      "balance": 10000,
+      "status": "Active",
+      "open_date": "2026-02-10"
+    },
+    {
+      "account_no": "A1011",
+      "customer_id": "C011",
+      "branch_id": "B004",
+      "account_type": "Savings",
+      "balance": 5000,
+      "status": "Active",
+      "open_date": "2026-02-15"
+    }
+  ],
+  "loans": [
+    {
+      "loan_id": "L001",
+      "customer_id": "C001",
+      "branch_id": "B001",
+      "loan_type": "Home Loan",
+      "loan_amount": 500000,
+      "interest_rate": 18.50,
+      "duration_months": 36,
+      "application_date": "2026-02-01",
+      "approval_date": "2026-02-10",
+      "disbursement_date": "2026-02-15",
+      "monthly_installment": 18500.00,
+      "total_payable": 666000,
+      "outstanding_balance": 480000,
+      "next_due_date": "2026-11-15",
+      "status": "Active"
+    },
+    {
+      "loan_id": "L002",
+      "customer_id": "C003",
+      "branch_id": "B003",
+      "loan_type": "Business Loan",
+      "loan_amount": 300000,
+      "interest_rate": 16.00,
+      "duration_months": 24,
+      "application_date": "2026-02-04",
+      "approval_date": "2026-02-12",
+      "disbursement_date": "2026-02-18",
+      "monthly_installment": 15833.33,
+      "total_payable": 380000,
+      "outstanding_balance": 250000,
+      "next_due_date": "2026-12-18",
+      "status": "Active"
+    },
+    {
+      "loan_id": "L003",
+      "customer_id": "C005",
+      "branch_id": "B003",
+      "loan_type": "Education Loan",
+      "loan_amount": 120000,
+      "interest_rate": 15.00,
+      "duration_months": 18,
+      "application_date": "2026-02-06",
+      "approval_date": "2026-02-14",
+      "disbursement_date": "2026-02-20",
+      "monthly_installment": 7666.67,
+      "total_payable": 138000,
+      "outstanding_balance": 105000,
+      "next_due_date": "2026-11-20",
+      "status": "Active"
+    },
+    {
+      "loan_id": "L004",
+      "customer_id": "C007",
+      "branch_id": "B003",
+      "loan_type": "Car Loan",
+      "loan_amount": 250000,
+      "interest_rate": 17.00,
+      "duration_months": 30,
+      "application_date": "2026-02-08",
+      "approval_date": "2026-02-16",
+      "disbursement_date": "2026-02-22",
+      "monthly_installment": 10833.33,
+      "total_payable": 325000,
+      "outstanding_balance": 220000,
+      "next_due_date": "2026-12-22",
+      "status": "Active"
+    },
+    {
+      "loan_id": "L005",
+      "customer_id": "C009",
+      "branch_id": "B002",
+      "loan_type": "Personal Loan",
+      "loan_amount": 80000,
+      "interest_rate": 19.00,
+      "duration_months": 12,
+      "application_date": "2026-02-10",
+      "approval_date": "2026-02-15",
+      "disbursement_date": "2026-02-25",
+      "monthly_installment": 7333.33,
+      "total_payable": 88000,
+      "outstanding_balance": 65000,
+      "next_due_date": "2026-11-25",
+      "status": "Active"
+    }
+  ],
+  "transactions": [
+    {
+      "transaction_id": "T001",
+      "account_no": "A1001",
+      "branch_id": "B001",
+      "transaction_type": "Deposit",
+      "amount": 1000,
+      "transaction_date": "2026-03-01",
+      "description": "Salary Deposit",
+      "reference_number": "TXN-001"
+    },
+    {
+      "transaction_id": "T002",
+      "account_no": "A1001",
+      "branch_id": "B001",
+      "transaction_type": "Loan Disbursement",
+      "amount": 500000,
+      "transaction_date": "2026-02-15",
+      "description": "Home Loan Disbursed",
+      "reference_number": "LN-DIS-001",
+      "loan_id": "L001"
+    },
+    {
+      "transaction_id": "T003",
+      "account_no": "A1001",
+      "branch_id": "B001",
+      "transaction_type": "Loan Repayment",
+      "amount": 18500,
+      "transaction_date": "2026-03-15",
+      "description": "Monthly payment for Home Loan",
+      "reference_number": "LN-PAY-001",
+      "loan_id": "L001"
+    },
+    {
+      "transaction_id": "T004",
+      "account_no": "A1003",
+      "branch_id": "B003",
+      "transaction_type": "Withdrawal",
+      "amount": 700,
+      "transaction_date": "2026-03-04",
+      "description": "Cash Withdrawal",
+      "reference_number": "TXN-002"
+    }
+  ]
+}
