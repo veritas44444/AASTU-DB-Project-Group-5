@@ -6,7 +6,7 @@ VALUES
 ('B002','Bole Branch','Addis Ababa','0911000002',NULL),
 ('B003','Hara Branch','Adama','0911000003',NULL),
 ('B004','Arada Branch','Addis Ababa','0911000004',NULL);
-INSERT INTO Customers(CustomerID, FirstName, LastName, gender, phone_number,address, RegistrationDate, Branch_ID, Date_Of_Birth, email, National_iD)
+INSERT INTO Customers(Customer_iD, first_Name, last_Name, gender, phone_number,address, RegistrationDate, Branch_ID, Date_Of_Birth, email, National_iD)
 VALUES
 ('C001','Abebe','Bekele','M','0912000001','Addis Ababa','2026-01-05','B001','1965-11-20','abebe.bekele@example.com','7548658496973896'),
 
@@ -134,7 +134,7 @@ VALUES
   
 ('U006','hana_tesfaye','(hashed)',NULL,'C002','customer','Active','2026-05-19 11:10'),
   
-('U007','meron_alemu','(hashed)',NULL,'C003','customer','active',NULL);
+('U007','meron_alemu','(hashed)',NULL,'C003','customer','Active',NULL);
 
 INSERT INTO AuditLog VALUES
 ('AL001','customer','C001','INSERT','U001','2026-01-05 09:15','New customer C001 (Abebe Bekele) created'),
