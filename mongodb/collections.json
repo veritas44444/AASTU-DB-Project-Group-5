@@ -666,7 +666,6 @@
       "transaction_date": "2026-02-15",
       "description": "Home Loan Disbursed",
       "reference_number": "LN-DIS-001",
-      "loan_id": "L001"
     },
     {
       "transaction_id": "T003",
@@ -677,7 +676,6 @@
       "transaction_date": "2026-03-15",
       "description": "Monthly payment for Home Loan",
       "reference_number": "LN-PAY-001",
-      "loan_id": "L001"
     },
     {
       "transaction_id": "T004",

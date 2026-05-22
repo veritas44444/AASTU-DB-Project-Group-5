@@ -128,7 +128,6 @@ db.createCollection("transactions", {
         transaction_date: { bsonType: "date" },
         description:      { bsonType: ["string", "null"] },
         reference_number: { bsonType: ["string", "null"] },
-        loan_id:          { bsonType: ["string", "null"], description: "FK → loans.loan_id (for loan-related transactions)" },
         branch_id:        { bsonType: "string", description: "FK → branches.branch_id" },
       },
     },
