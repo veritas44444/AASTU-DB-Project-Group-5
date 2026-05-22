@@ -6,7 +6,7 @@ VALUES
 ('B002','Bole Branch','Addis Ababa','0911000002',NULL),
 ('B003','Hara Branch','Adama','0911000003',NULL),
 ('B004','Arada Branch','Addis Ababa','0911000004',NULL);
-INSERT INTO Customer(CustomerID, FirstName, LastName, Gender, Phone, City, RegistrationDate, BranchID, DateOfBirth, Email, NationalID)
+INSERT INTO Customers(CustomerID, FirstName, LastName, gender, phone_number,address, RegistrationDate, Branch_ID, Date_Of_Birth, email, National_iD)
 VALUES
 ('C001','Abebe','Bekele','M','0912000001','Addis Ababa','2026-01-05','B001','1965-11-20','abebe.bekele@example.com','7548658496973896'),
 
@@ -29,7 +29,7 @@ VALUES
 ('C010','Nati','Yared','M','0912000010','Adama','2026-01-20','B003','1985-06-22','nati.yared@example.com','4161137359341012'),
 
 ('C011','selam','kebede','F','0912000011','Addis Ababa','2026-01-21','B004','1992-08-14','selam.kebede@example.com','198967890123456');
-INSERT INTO Account(AccountID, CustomerID, BranchID, AccountType, Balance, Status, OpenDate)
+INSERT INTO Account(account_no, customer_id, branch_id,account_type, balance, status, open_date)
 VALUES
 ('A1001','C001','B001','Savings',5000,'Active','2026-01-11'),
 
@@ -53,7 +53,7 @@ VALUES
 
 ('A1011','C011','B004','Savings',5000,'Active','2026-02-15');
 INSERT INTO Employee 
-(EmployeeID, First_Name, Last_Name, Position, Email, Phone, Salary, BranchID)
+(employee_id, first_name, last_name,position, email, phone_number, salary, branch_id)
 VALUES
 ('E001', 'Tsegaye', 'Endale', 'Manager', 'tsegaye@gcb.com', '0913000001', 25000, 'B001'),
 
@@ -91,7 +91,9 @@ INSERT INTO transactions VALUES
 ('T003','A1001','B001','Loan Repayment',18500,'2026-03-15','Monthly payment for Home Loan','LN-PAY-001','L001'),
 
 ('T004','A1003','B003','Withdrawal',700,'2026-03-04','Cash Withdrawal','TXN-002',NULL);
-INSERT INTO loans VALUES
+
+INSERT INTO loan
+VALUES
 
 ('L001','C001','B001','Home Loan',500000,18.50,36,'2026-02-01','2026-02-10','2026-02-15',18500.00,666000,480000,'2026-11-15','Active'),
 
@@ -102,7 +104,8 @@ INSERT INTO loans VALUES
 ('L004','C007','B003','Car Loan',250000,17.00,30,'2026-02-08','2026-02-16','2026-02-22',10833.33,325000,220000,'2026-12-22','Active'),
 
 ('L005','C009','B002','Personal Loan',80000,19.00,12,'2026-02-10','2026-02-15','2026-02-25',7333.33,88000,65000,'2026-11-25','Active');
-INSERT INTO loan_payments VALUES
+INSERT INTO loan_payments
+VALUES
   
 ('P001','L001','2026-03-15',18500.00,12000.00,6500.00,468000.00,'E001'),
   
@@ -114,7 +117,8 @@ INSERT INTO loan_payments VALUES
   
 ('P005','L004','2026-03-22',10833.33,7500.00,3333.33,212500.00,'E003');
 
-INSERT INTO users VALUES
+INSERT INTO users 
+VALUES
   
 ('U001','admin','(hashed)','E001',NULL,'manager','active','2026-05-20 10:30'),
   
@@ -130,7 +134,7 @@ INSERT INTO users VALUES
   
 ('U007','meron_alemu','(hashed)',NULL,'C003','customer','active',NULL);
 
-INSERT INTO audit_log VALUES
+INSERT INTO AuditLog VALUES
 ('AL001','customer','C001','INSERT','E001','2026-01-05 09:15','New customer C001 (Abebe Bekele) created'),
 
 ('AL002','account','A1001','INSERT','E002','2026-01-11 10:30','Savings account A1001 created for customer C001'),

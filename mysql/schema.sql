@@ -90,7 +90,7 @@ CREATE TABLE Loan (
     next_due_date DATE,
 
     status VARCHAR(30) DEFAULT 'Pending',
-  CHECK (status IN ('Pending', 'Approved', 'Rejected', 'Closed')),
+  CHECK (status IN ('Pending', 'Approved', 'Rejected', 'Closed','Active')),
 
     FOREIGN KEY (customer_id)
         REFERENCES Customers(customer_id),
@@ -117,10 +117,14 @@ CREATE TABLE Transactions (
     description VARCHAR(255),
 
     reference_number VARCHAR(50),
+  
+    loan_id VARCHAR(20),
 
     FOREIGN KEY (account_no) REFERENCES Account(account_no),
 
-    FOREIGN KEY (branch_id) REFERENCES Branch(branch_id)
+    FOREIGN KEY (branch_id) REFERENCES Branch(branch_id),
+  
+    FOREIGN KEY (loan_id)  REFERENCES Loan(loan_id)
 );
 GO
 
