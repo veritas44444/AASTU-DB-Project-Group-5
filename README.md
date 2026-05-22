@@ -62,8 +62,8 @@ Presentation: Microsoft PowerPoint
       BranchID(FK), 
       TransactionType, 
       Amount, description, reference_number, 
-      TransactionDate,
-      loan_id(FK)
+      TransactionDate
+     
    
  6. Employee:
     
