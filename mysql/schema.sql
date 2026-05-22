@@ -131,12 +131,12 @@ CREATE TABLE Employee (
 
     last_name VARCHAR(50) NOT NULL,
 
-    phone_number VARCHAR(20),
+    position VARCHAR(50),
 
-    email VARCHAR(100) UNIQUE
+  email VARCHAR(100) UNIQUE
   CHECK (email LIKE '%@%.%'),
 
-    position VARCHAR(50),
+    phone_number VARCHAR(20),
 
     salary DECIMAL(15,2)
  CHECK (salary >= 0),
