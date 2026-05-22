@@ -22,18 +22,18 @@ CONSTRAINT pk_Branch PRIMARY KEY (branch_id)
 GO
 
 CREATE TABLE Customers(
-customer_id VARCHAR(15) PRIMARY KEY,
-first_name VARCHAR(50) NOT NULL,
-last_name VARCHAR(50) NOT NULL,
-date_of_birth DATE,
+customerID VARCHAR(15) PRIMARY KEY,
+First_name VARCHAR(50) NOT NULL,
+Last_name VARCHAR(50) NOT NULL,
 gender VARCHAR(10),
-address VARCHAR(200),
-registration_date DATE,
 phone_number varchar(20),
-email varchar(100)
-  CHECK (email LIKE '%@%.%'),
-national_id VARCHAR(20) UNIQUE,
+adress varchar(15),
+registration_date DATE,
 branch_id VARCHAR(10) NOT NULL,
+date_of_birth DATE,
+email varchar(100)
+CHECK (email LIKE '%@%.%'),
+national_id VARCHAR(20) UNIQUE,
 FOREIGN KEY (branch_id) REFERENCES Branch(branch_id)
 );
 GO
@@ -42,16 +42,13 @@ DROP TABLE IF EXISTS account;
 CREATE TABLE account(
 account_no VARCHAR(20) PRIMARY KEY,
 customer_id VARCHAR(15) NOT NULL,
+branch_id VARCHAR(10) NOT NULL,
 account_type VARCHAR(20) NOT NULL,
 balance decimal(15,2) default 0
   CHECK (balance >= 0),
-open_date DATE DEFAULT GETDATE(),
- 
 status VARCHAR(20)
   CHECK (status IN ('Active', 'Inactive', 'Closed')),
- 
-branch_id VARCHAR(10) NOT NULL,
- 
+ open_date DATE DEFAULT GETDATE(),
  FOREIGN KEY(customer_id) REFERENCES Customers(customer_id),
  FOREIGN KEY(branch_id) REFERENCES Branch(branch_id)
  );
