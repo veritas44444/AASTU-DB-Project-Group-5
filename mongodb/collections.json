@@ -38,6 +38,7 @@
       "email": "tsegaye@gcb.com",
       "phone_number": "0913000001",
       "salary": 25000,
+      "hire_date": null,
       "branch_id": "B001"
     },
     {
@@ -48,6 +49,7 @@
       "email": "helen@gcb.com",
       "phone_number": "0913000002",
       "salary": 12000,
+      "hire_date": null,
       "branch_id": "B001"
     },
     {
@@ -58,6 +60,7 @@
       "email": "yonatan@gcb.com",
       "phone_number": "0913000003",
       "salary": 15000,
+      "hire_date": null,
       "branch_id": "B002"
     },
     {
@@ -68,6 +71,7 @@
       "email": "mulugeta@gcb.com",
       "phone_number": "0913000004",
       "salary": 11000,
+      "hire_date": null,
       "branch_id": "B002"
     },
     {
@@ -78,6 +82,7 @@
       "email": "eden@gcb.com",
       "phone_number": "0913000005",
       "salary": 10000,
+      "hire_date": null,
       "branch_id": "B003"
     },
     {
@@ -88,6 +93,7 @@
       "email": "solomon@gcb.com",
       "phone_number": "0913000006",
       "salary": 25000,
+      "hire_date": null,
       "branch_id": "B003"
     }
   ],
@@ -422,6 +428,222 @@
       "outstanding_balance": 65000,
       "next_due_date": "2026-11-25",
       "status": "Active"
+    }
+  ],
+  "loan_payments": [
+    {
+      "payment_id": "P001",
+      "loan_id": "L001",
+      "payment_date": "2026-03-15",
+      "amount_paid": 18500.00,
+      "principal_paid": 12000.00,
+      "interest_paid": 6500.00,
+      "remaining_balance": 468000.00,
+      "recorded_by": "E001"
+    },
+    {
+      "payment_id": "P002",
+      "loan_id": "L001",
+      "payment_date": "2026-04-15",
+      "amount_paid": 18500.00,
+      "principal_paid": 12500.00,
+      "interest_paid": 6000.00,
+      "remaining_balance": 455500.00,
+      "recorded_by": "E001"
+    },
+    {
+      "payment_id": "P003",
+      "loan_id": "L002",
+      "payment_date": "2026-03-18",
+      "amount_paid": 15833.33,
+      "principal_paid": 11000.00,
+      "interest_paid": 4833.33,
+      "remaining_balance": 239000.00,
+      "recorded_by": "E006"
+    },
+    {
+      "payment_id": "P004",
+      "loan_id": "L003",
+      "payment_date": "2026-03-20",
+      "amount_paid": 7666.67,
+      "principal_paid": 5500.00,
+      "interest_paid": 2166.67,
+      "remaining_balance": 99500.00,
+      "recorded_by": "E006"
+    },
+    {
+      "payment_id": "P005",
+      "loan_id": "L004",
+      "payment_date": "2026-03-22",
+      "amount_paid": 10833.33,
+      "principal_paid": 7500.00,
+      "interest_paid": 3333.33,
+      "remaining_balance": 212500.00,
+      "recorded_by": "E003"
+    }
+  ],
+  "users": [
+    {
+      "user_id": "U001",
+      "username": "admin",
+      "password_hash": "(hashed)",
+      "employee_id": "E001",
+      "customer_id": null,
+      "role": "manager",
+      "status": "active",
+      "last_login": "2026-05-20T10:30:00"
+    },
+    {
+      "user_id": "U002",
+      "username": "teller_b001",
+      "password_hash": "(hashed)",
+      "employee_id": "E002",
+      "customer_id": null,
+      "role": "teller",
+      "status": "active",
+      "last_login": "2026-05-20T09:15:00"
+    },
+    {
+      "user_id": "U003",
+      "username": "accountant_b002",
+      "password_hash": "(hashed)",
+      "employee_id": "E003",
+      "customer_id": null,
+      "role": "manager",
+      "status": "active",
+      "last_login": "2026-05-19T14:45:00"
+    },
+    {
+      "user_id": "U004",
+      "username": "teller_b003",
+      "password_hash": "(hashed)",
+      "employee_id": "E005",
+      "customer_id": null,
+      "role": "teller",
+      "status": "active",
+      "last_login": "2026-05-20T08:50:00"
+    },
+    {
+      "user_id": "U005",
+      "username": "abebe_bekele",
+      "password_hash": "(hashed)",
+      "employee_id": null,
+      "customer_id": "C001",
+      "role": "customer",
+      "status": "active",
+      "last_login": "2026-05-18T16:20:00"
+    },
+    {
+      "user_id": "U006",
+      "username": "hana_tesfaye",
+      "password_hash": "(hashed)",
+      "employee_id": null,
+      "customer_id": "C002",
+      "role": "customer",
+      "status": "active",
+      "last_login": "2026-05-19T11:10:00"
+    },
+    {
+      "user_id": "U007",
+      "username": "meron_alemu",
+      "password_hash": "(hashed)",
+      "employee_id": null,
+      "customer_id": "C003",
+      "role": "customer",
+      "status": "active",
+      "last_login": null
+    }
+  ],
+  "audit_log": [
+    {
+      "log_id": "AL001",
+      "table_name": "customer",
+      "record_id": "C001",
+      "action": "INSERT",
+      "changed_by": "E001",
+      "changed_at": "2026-01-05T09:15:00",
+      "description": "New customer C001 (Abebe Bekele) created"
+    },
+    {
+      "log_id": "AL002",
+      "table_name": "account",
+      "record_id": "A1001",
+      "action": "INSERT",
+      "changed_by": "E002",
+      "changed_at": "2026-01-11T10:30:00",
+      "description": "Savings account A1001 created for customer C001"
+    },
+    {
+      "log_id": "AL003",
+      "table_name": "loan",
+      "record_id": "L001",
+      "action": "INSERT",
+      "changed_by": "E003",
+      "changed_at": "2026-02-10T14:45:00",
+      "description": "Home Loan L001 approved and created"
+    },
+    {
+      "log_id": "AL004",
+      "table_name": "loan",
+      "record_id": "L001",
+      "action": "UPDATE",
+      "changed_by": "E001",
+      "changed_at": "2026-02-15T11:20:00",
+      "description": "Loan L001 disbursed - status updated"
+    },
+    {
+      "log_id": "AL005",
+      "table_name": "transaction",
+      "record_id": "T001",
+      "action": "INSERT",
+      "changed_by": "E002",
+      "changed_at": "2026-03-01T09:05:00",
+      "description": "Deposit transaction T001 recorded"
+    },
+    {
+      "log_id": "AL006",
+      "table_name": "loan_payments",
+      "record_id": "P001",
+      "action": "INSERT",
+      "changed_by": "E001",
+      "changed_at": "2026-03-15T10:30:00",
+      "description": "First monthly payment for loan L001 recorded"
+    },
+    {
+      "log_id": "AL007",
+      "table_name": "account",
+      "record_id": "A1001",
+      "action": "UPDATE",
+      "changed_by": "E002",
+      "changed_at": "2026-03-15T10:31:00",
+      "description": "Account balance updated after loan payment"
+    },
+    {
+      "log_id": "AL008",
+      "table_name": "customer",
+      "record_id": "C003",
+      "action": "UPDATE",
+      "changed_by": "E004",
+      "changed_at": "2026-04-02T14:10:00",
+      "description": "Customer C003 phone number updated"
+    },
+    {
+      "log_id": "AL009",
+      "table_name": "loan",
+      "record_id": "L002",
+      "action": "UPDATE",
+      "changed_by": "E003",
+      "changed_at": "2026-04-05T08:55:00",
+      "description": "Loan L002 outstanding balance updated"
+    },
+    {
+      "log_id": "AL010",
+      "table_name": "transaction",
+      "record_id": "T003",
+      "action": "INSERT",
+      "changed_by": "E002",
+      "changed_at": "2026-05-10T16:40:00",
+      "description": "Loan disbursement recorded as transaction"
     }
   ],
   "transactions": [
