@@ -37,7 +37,7 @@ VALUES
 
 ('A1003','C003','B003','Savings',8000,'Active','2026-02-01'),
 
-('A1004','C004','B001','Savings',3000,'inactive','2026-01-15'),
+('A1004','C004','B001','Savings',3000,'Inactive','2026-01-15'),
 
 ('A1005','C005','B003','Current',15000,'Active','2026-01-20'),
 
@@ -83,15 +83,6 @@ UPDATE Branch
 SET manager_id = 'E004'
 WHERE branch_id = 'B004';
 
-INSERT INTO transactions VALUES
-('T001','A1001','B001','Deposit',1000,'2026-03-01','Salary Deposit','TXN-001',NULL),
-
-('T002','A1001','B001','Loan Disbursement',500000,'2026-02-15','Home Loan Disbursed','LN-DIS-001','L001'),
-
-('T003','A1001','B001','Loan Repayment',18500,'2026-03-15','Monthly payment for Home Loan','LN-PAY-001','L001'),
-
-('T004','A1003','B003','Withdrawal',700,'2026-03-04','Cash Withdrawal','TXN-002',NULL);
-
 INSERT INTO loan
 VALUES
 
@@ -104,6 +95,17 @@ VALUES
 ('L004','C007','B003','Car Loan',250000,17.00,30,'2026-02-08','2026-02-16','2026-02-22',10833.33,325000,220000,'2026-12-22','Active'),
 
 ('L005','C009','B002','Personal Loan',80000,19.00,12,'2026-02-10','2026-02-15','2026-02-25',7333.33,88000,65000,'2026-11-25','Active');
+
+INSERT INTO transactions VALUES
+('T001','A1001','B001','Deposit',1000,'2026-03-01','Salary Deposit','TXN-001',NULL),
+
+('T002','A1001','B001','Loan Disbursement',500000,'2026-02-15','Home Loan Disbursed','LN-DIS-001','L001'),
+
+('T003','A1001','B001','Loan Repayment',18500,'2026-03-15','Monthly payment for Home Loan','LN-PAY-001','L001'),
+
+('T004','A1003','B003','Withdrawal',700,'2026-03-04','Cash Withdrawal','TXN-002',NULL);
+
+
 INSERT INTO loan_payments
 VALUES
   
@@ -120,37 +122,37 @@ VALUES
 INSERT INTO users 
 VALUES
   
-('U001','admin','(hashed)','E001',NULL,'manager','active','2026-05-20 10:30'),
+('U001','admin','(hashed)','E001',NULL,'manager','Active','2026-05-20 10:30'),
   
-('U002','teller_b001','(hashed)','E002',NULL,'teller','active','2026-05-20 09:15'),
+('U002','teller_b001','(hashed)','E002',NULL,'teller','Active','2026-05-20 09:15'),
   
-('U003','accountant_b002','(hashed)','E003',NULL,'manager','active','2026-05-19 14:45'),
+('U003','accountant_b002','(hashed)','E003',NULL,'manager','Active','2026-05-19 14:45'),
   
 ('U004','teller_b003','(hashed)','E005',NULL,'teller','active','2026-05-20 08:50'),
   
 ('U005','abebe_bekele','(hashed)',NULL,'C001','customer','active','2026-05-18 16:20'),
   
-('U006','hana_tesfaye','(hashed)',NULL,'C002','customer','active','2026-05-19 11:10'),
+('U006','hana_tesfaye','(hashed)',NULL,'C002','customer','Active','2026-05-19 11:10'),
   
 ('U007','meron_alemu','(hashed)',NULL,'C003','customer','active',NULL);
 
 INSERT INTO AuditLog VALUES
-('AL001','customer','C001','INSERT','E001','2026-01-05 09:15','New customer C001 (Abebe Bekele) created'),
+('AL001','customer','C001','INSERT','U001','2026-01-05 09:15','New customer C001 (Abebe Bekele) created'),
 
-('AL002','account','A1001','INSERT','E002','2026-01-11 10:30','Savings account A1001 created for customer C001'),
+('AL002','account','A1001','INSERT','U002','2026-01-11 10:30','Savings account A1001 created for customer C001'),
 
-('AL003','loan','L001','INSERT','E003','2026-02-10 14:45','Home Loan L001 approved and created'),
+('AL003','loan','L001','INSERT','U003','2026-02-10 14:45','Home Loan L001 approved and created'),
 
-('AL004','loan','L001','UPDATE','E001','2026-02-15 11:20','Loan L001 disbursed - status updated'),
+('AL004','loan','L001','UPDATE','U001','2026-02-15 11:20','Loan L001 disbursed - status updated'),
 
-('AL005','transaction','T001','INSERT','E002','2026-03-01 09:05','Deposit transaction T001 recorded'),
+('AL005','transaction','T001','INSERT','U002','2026-03-01 09:05','Deposit transaction T001 recorded'),
 
-('AL006','loan_payments','P001','INSERT','E001','2026-03-15 10:30','First monthly payment for loan L001 recorded'),
+('AL006','loan_payments','P001','INSERT','U001','2026-03-15 10:30','First monthly payment for loan L001 recorded'),
 
-('AL007','account','A1001','UPDATE','E002','2026-03-15 10:31','Account balance updated after loan payment'),
+('AL007','account','A1001','UPDATE','U002','2026-03-15 10:31','Account balance updated after loan payment'),
 
-('AL008','customer','C003','UPDATE','E004','2026-04-02 14:10','Customer C003 phone number updated'),
+('AL008','customer','C003','UPDATE','U004','2026-04-02 14:10','Customer C003 phone number updated'),
 
-('AL009','loan','L002','UPDATE','E003','2026-04-05 08:55','Loan L002 outstanding balance updated'),
+('AL009','loan','L002','UPDATE','U003','2026-04-05 08:55','Loan L002 outstanding balance updated'),
 
-('AL010','transaction','T003','INSERT','E002','2026-05-10 16:40','Loan disbursement recorded as transaction');
+('AL010','transaction','T003','INSERT','U002','2026-05-10 16:40','Loan disbursement recorded as transaction');
