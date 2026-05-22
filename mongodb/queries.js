@@ -9,6 +9,9 @@ db.accounts.drop();
 db.loans.drop();
 db.transactions.drop();
 db.employees.drop();
+db.loan_payments.drop();
+db.users.drop();
+db.audit_log.drop();
 
 print("✔  Old collections dropped.");
 
@@ -125,7 +128,6 @@ db.createCollection("transactions", {
         transaction_date: { bsonType: "date" },
         description:      { bsonType: ["string", "null"] },
         reference_number: { bsonType: ["string", "null"] },
-        loan_id:          { bsonType: ["string", "null"], description: "FK → loans.loan_id (for loan-related transactions)" },
         branch_id:        { bsonType: "string", description: "FK → branches.branch_id" },
       },
     },
@@ -149,6 +151,69 @@ db.createCollection("employees", {
         branch_id:    { bsonType: "string", description: "FK → branches.branch_id" },
         email:        { bsonType: "string" },
         phone_number: { bsonType: "string" },
+      },
+    },
+  },
+  validationAction: "warn",
+});
+
+
+// ── 2.7  Loan Payments
+db.createCollection("loan_payments", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["payment_id", "loan_id", "payment_date", "amount_paid", "recorded_by"],
+      properties: {
+        payment_id:        { bsonType: "string" },
+        loan_id:           { bsonType: "string", description: "FK → loans.loan_id" },
+        payment_date:      { bsonType: "date" },
+        amount_paid:       { bsonType: "double", minimum: 0.01 },
+        principal_paid:    { bsonType: ["double", "null"] },
+        interest_paid:     { bsonType: ["double", "null"] },
+        remaining_balance: { bsonType: ["double", "null"] },
+        recorded_by:       { bsonType: "string", description: "FK → employees.employee_id" },
+      },
+    },
+  },
+  validationAction: "warn",
+});
+
+// ── 2.8  Users
+db.createCollection("users", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["user_id", "username", "password_hash", "role", "status"],
+      properties: {
+        user_id:       { bsonType: "string" },
+        username:      { bsonType: "string" },
+        password_hash: { bsonType: "string" },
+        employee_id:   { bsonType: ["string", "null"], description: "FK → employees.employee_id" },
+        customer_id:   { bsonType: ["string", "null"], description: "FK → customers.customer_id" },
+        role:          { enum: ["manager", "teller", "customer"] },
+        status:        { enum: ["active", "inactive", "suspended"] },
+        last_login:    { bsonType: ["date", "null"] },
+      },
+    },
+  },
+  validationAction: "warn",
+});
+
+// ── 2.9  Audit Log
+db.createCollection("audit_log", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["log_id", "table_name", "record_id", "action", "changed_by", "changed_at"],
+      properties: {
+        log_id:      { bsonType: "string" },
+        table_name:  { bsonType: "string" },
+        record_id:   { bsonType: "string" },
+        action:      { enum: ["INSERT", "UPDATE", "DELETE"] },
+        changed_by:  { bsonType: "string", description: "FK → employees.employee_id" },
+        changed_at:  { bsonType: "date" },
+        description: { bsonType: ["string", "null"] },
       },
     },
   },
@@ -179,6 +244,18 @@ db.transactions.createIndex({ transaction_type: 1 }, { name: "idx_txn_type" });
 db.transactions.createIndex({ account_no: 1, transaction_date: -1 }, { name: "idx_txn_account_date" });
 db.employees.createIndex({ employee_id: 1 }, { unique: true, name: "idx_employee_id" });
 db.employees.createIndex({ branch_id: 1 }, { name: "idx_employee_branch" });
+db.loan_payments.createIndex({ payment_id: 1 }, { unique: true, name: "idx_payment_id" });
+db.loan_payments.createIndex({ loan_id: 1 }, { name: "idx_payment_loan" });
+db.loan_payments.createIndex({ payment_date: -1 }, { name: "idx_payment_date" });
+db.loan_payments.createIndex({ recorded_by: 1 }, { name: "idx_payment_recorded_by" });
+db.users.createIndex({ user_id: 1 }, { unique: true, name: "idx_user_id" });
+db.users.createIndex({ username: 1 }, { unique: true, name: "idx_username" });
+db.users.createIndex({ employee_id: 1 }, { sparse: true, name: "idx_user_employee" });
+db.users.createIndex({ customer_id: 1 }, { sparse: true, name: "idx_user_customer" });
+db.audit_log.createIndex({ log_id: 1 }, { unique: true, name: "idx_log_id" });
+db.audit_log.createIndex({ table_name: 1, record_id: 1 }, { name: "idx_log_table_record" });
+db.audit_log.createIndex({ changed_by: 1 }, { name: "idx_log_changed_by" });
+db.audit_log.createIndex({ changed_at: -1 }, { name: "idx_log_changed_at" });
 
 print("✔  Indexes created.");
 
@@ -192,7 +269,7 @@ function parseDates(doc, dateFields) {
   return out;
 }
 
-const seed = JSON.parse(fs.readFileSync("collections.json", "utf8"));
+const seed = JSON.parse(fs.readFileSync("mongodb/collections.json", "utf8"));
 
 db.branches.insertMany(seed.branches);
 db.employees.insertMany(seed.employees);
@@ -200,6 +277,9 @@ db.customers.insertMany(seed.customers.map(c => parseDates(c, ["date_of_birth", 
 db.accounts.insertMany(seed.accounts.map(a => parseDates(a, ["open_date"])));
 db.loans.insertMany(seed.loans.map(l => parseDates(l, ["application_date", "approval_date", "disbursement_date", "next_due_date"])));
 db.transactions.insertMany(seed.transactions.map(t => parseDates(t, ["transaction_date"])));
+db.loan_payments.insertMany(seed.loan_payments.map(p => parseDates(p, ["payment_date"])));
+db.users.insertMany(seed.users.map(u => parseDates(u, ["last_login"])));
+db.audit_log.insertMany(seed.audit_log.map(a => parseDates(a, ["changed_at"])));
 
 print("✔  Seed data inserted from collections.json.");
 
@@ -664,10 +744,13 @@ printjson(
 //  SECTION 7 — Number of records in each collection
 
 print("  SECTION 7 — VERIFICATION SUMMARY");
-print(`  Branches:     ${db.branches.countDocuments()}`);
-print(`  Customers:    ${db.customers.countDocuments()}`);
-print(`  Accounts:     ${db.accounts.countDocuments()}`);
-print(`  Loans:        ${db.loans.countDocuments()}`);
-print(`  Transactions: ${db.transactions.countDocuments()}`);
-print(`  Employees:    ${db.employees.countDocuments()}`);
+print(`  Branches:      ${db.branches.countDocuments()}`);
+print(`  Customers:     ${db.customers.countDocuments()}`);
+print(`  Accounts:      ${db.accounts.countDocuments()}`);
+print(`  Loans:         ${db.loans.countDocuments()}`);
+print(`  Transactions:  ${db.transactions.countDocuments()}`);
+print(`  Employees:     ${db.employees.countDocuments()}`);
+print(`  Loan Payments: ${db.loan_payments.countDocuments()}`);
+print(`  Users:         ${db.users.countDocuments()}`);
+print(`  Audit Log:     ${db.audit_log.countDocuments()}`);
 print("\n✅  Gebar Commercial Bank MongoDB setup complete!");
