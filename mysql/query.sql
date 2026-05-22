@@ -66,14 +66,6 @@ VALUES
 ('E005', 'Eden', 'Shiferaw', 'Customer Service', 'eden@gcb.com', '0913000005', 10000, 'B003'),
 
 ('E006', 'Solomon', 'Wondimu', 'Manager', 'solomon@gcb.com', '0913000006', 25000, 'B003');
-INSERT INTO Loan (LoanID, CustomerID, LoanType, Amount, ApplicationDate, BranchID)
-VALUES
-('L001', 'C001', 'Home Loan', 500000, '2026-02-01', 'B001'),
-('L002', 'C003', 'Business Loan', 300000, '2026-02-04', 'B003'),
-('L003', 'C005', 'Education Loan', 120000, '2026-02-06', 'B003'),
-('L004', 'C007', 'Car Loan', 250000, '2026-02-08', 'B003'),
-('L005', 'C009', 'Personal Loan', 80000, '2026-02-10', 'B002');
-
 INSERT INTO transactions VALUES
 ('T001','A1001','B001','Deposit',1000,'2026-03-01','Salary Deposit','TXN-001',NULL),
 
