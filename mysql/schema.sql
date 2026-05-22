@@ -49,8 +49,9 @@ branch_id VARCHAR(10),
 DROP TABLE IF EXISTS Transactions;
 DROP TABLE IF EXISTS Loan;
 DROP TABLE IF EXISTS Employee;
-DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS loan_payments,
+DROP TABLE IF EXISTS AuditLog,
 
 GO
 
@@ -178,8 +179,7 @@ CREATE TABLE users (
 
     last_login DATETIME,
 
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-
+    
     FOREIGN KEY (employee_id)
         REFERENCES Employee(employee_id),
 
@@ -188,3 +188,23 @@ CREATE TABLE users (
 
     CHECK (role IN ('manager', 'teller', 'customer'))
 );
+CREATE TABLE AuditLog (
+    LogID VARCHAR(15) PRIMARY KEY,
+
+    TableName VARCHAR(100),
+    RecordID VARCHAR(20),
+
+    Action VARCHAR(10)
+    CHECK (Action IN ('INSERT', 'UPDATE', 'DELETE')),
+
+    ChangedBy VARCHAR(10),
+
+    ChangedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+    OldValues TEXT,
+    NewValues TEXT,
+
+    FOREIGN KEY (ChangedBy)
+    REFERENCES EMPLOYEE(EmployeeID)
+);
+
