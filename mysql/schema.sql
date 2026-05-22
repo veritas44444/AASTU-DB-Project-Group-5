@@ -22,12 +22,12 @@ CONSTRAINT pk_Branch PRIMARY KEY (branch_id)
 GO
 
 CREATE TABLE Customers(
-customerID VARCHAR(15) PRIMARY KEY,
-First_name VARCHAR(50) NOT NULL,
-Last_name VARCHAR(50) NOT NULL,
+customer_id VARCHAR(15) PRIMARY KEY,
+first_name VARCHAR(50) NOT NULL,
+last_name VARCHAR(50) NOT NULL,
 gender VARCHAR(10),
 phone_number varchar(20),
-adress varchar(15),
+address varchar(115),
 registration_date DATE,
 branch_id VARCHAR(10) NOT NULL,
 date_of_birth DATE,
@@ -222,8 +222,6 @@ CREATE TABLE AuditLog (
     changed_by VARCHAR(20) NOT NULL,
 
     changed_at DATETIME DEFAULT CURRENT_TIMESTAMP,
- 
-     old_values VARCHAR(MAX),
  
      new_values VARCHAR(MAX),
 
