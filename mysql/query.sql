@@ -2,10 +2,10 @@ USE GEBAR_COMMERCIAL_BANK;
 GO
 INSERT INTO Branch(BranchID, BranchName, City, Phone, ManagerID)
 VALUES
-('B001','Main Branch','Addis Ababa','0911000001','E001'),
-('B002','Bole Branch','Addis Ababa','0911000002','E003'),
-('B003','Hara Branch','Adama','0911000003','E006'),
-('B004','Arada Branch','Addis Ababa','0911000004','E004');
+('B001','Main Branch','Addis Ababa','0911000001',NULL),
+('B002','Bole Branch','Addis Ababa','0911000002',NULL),
+('B003','Hara Branch','Adama','0911000003',NULL),
+('B004','Arada Branch','Addis Ababa','0911000004',NULL);
 INSERT INTO Customer(CustomerID, FirstName, LastName, Gender, Phone, City, RegistrationDate, BranchID, DateOfBirth, Email, NationalID)
 VALUES
 ('C001','Abebe','Bekele','M','0912000001','Addis Ababa','2026-01-05','B001','1965-11-20','abebe.bekele@example.com','7548658496973896'),
@@ -66,6 +66,23 @@ VALUES
 ('E005', 'Eden', 'Shiferaw', 'Customer Service', 'eden@gcb.com', '0913000005', 10000, 'B003'),
 
 ('E006', 'Solomon', 'Wondimu', 'Manager', 'solomon@gcb.com', '0913000006', 25000, 'B003');
+
+UPDATE Branch
+SET manager_id = 'E001'
+WHERE branch_id = 'B001';
+
+UPDATE Branch
+SET manager_id = 'E003'
+WHERE branch_id = 'B002';
+
+UPDATE Branch
+SET manager_id = 'E006'
+WHERE branch_id = 'B003';
+
+UPDATE Branch
+SET manager_id = 'E004'
+WHERE branch_id = 'B004';
+
 INSERT INTO transactions VALUES
 ('T001','A1001','B001','Deposit',1000,'2026-03-01','Salary Deposit','TXN-001',NULL),
 
