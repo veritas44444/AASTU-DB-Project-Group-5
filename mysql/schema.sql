@@ -22,12 +22,12 @@ CONSTRAINT pk_Branch PRIMARY KEY (branch_id)
 GO
 
 CREATE TABLE Customers(
-customerID VARCHAR(15) PRIMARY KEY,
-First_name VARCHAR(50) NOT NULL,
-Last_name VARCHAR(50) NOT NULL,
+customer_iD VARCHAR(15) PRIMARY KEY,
+first_name VARCHAR(50) NOT NULL,
+last_name VARCHAR(50) NOT NULL,
 gender VARCHAR(10),
 phone_number varchar(20),
-adress varchar(15),
+address varchar(15),
 registration_date DATE,
 branch_id VARCHAR(10) NOT NULL,
 date_of_birth DATE,
